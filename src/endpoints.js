@@ -1,3 +1,5 @@
+const { verifyValidUserForRegister } = require('./utils');
+
 //Valida a entrada do usuário
 function login(username, password) {
     return fetch('http://localhost:3001/users')
@@ -21,23 +23,25 @@ function login(username, password) {
     .catch(error => { return `Erro ao buscar usuários`});
 }
 
-//Valida se o nome de usuário já foi cadastrado
-function verifyValidUser(username) {
-    return fetch('http://localhost:3001/users')
-    .then(response => response.json())
-    .then(userCredentials => {
-        
-        const findUser = userCredentials.find(user => user.username === username);
+//Cria um novo usuário
+function createNewUser(newUser) {
+    if(verifyValidUserForRegister(newUser.usename)) {
+        return fetch('http://localhost:3001/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(response => response.json())
+        .then(data => {
+            return `Novo usuário adicionado: ${newUser.usename}`;
+        })
+        .catch(error => { return `Erro ao adicionar novo usuário ${error}`});
 
-        //se usuário for encontrado na base de dados, ele não é valido!
-        if (findUser) {
-            return false;
-        } else {
-            return true;
-        }
-
-    })
-    .catch(error => { return `Erro ao buscar usuários`});
+    } else {
+        return "Usuário com nome indetico já cadastrado!";
+    }
 }
 
 //Recupera todos jogos dentro do JSON SERVER
@@ -129,7 +133,7 @@ function postGames(newGame) {
 
 module.exports = {
     login,
-    verifyValidUser,
+    createNewUser,
     getGames,
     getSpecificGame,
     getCommentsFromSpecificGame,

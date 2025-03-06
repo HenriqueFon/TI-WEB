@@ -1,13 +1,35 @@
-const { login, verifyValidUser } = require('./src/endpoints');
+const { login, createNewUser } = require('./src/endpoints');
+const { generateUniqueId } = require('./src/utils');
 
 let username = "Henrique";
 let password = "Password123"
 
+let userId;
+
+generateUniqueId().then(Id => {userId = Id})
+
+
+const newUser = {
+    "id": userId,
+    "username": "Henrique",
+    "password": "Password123",
+    "image": "",
+    "favorite_genres":["RPG"],
+    "favorite_games":[],
+    "spec": {
+        "processor": "Intel(R) Core(TM) i7-10700KF CPU @ 3.80GHz",
+        "ram": "16GB DDR4",
+        "graphic_cards": "NVIDIA GeForce RTX 3070",
+        "storage": "1TB SSD",
+        "operating_system": "Windows 11"
+    }
+}
+
+createNewUser(newUser)
+.then(users => {console.log(users)})
+
 // login(username, password)
 // .then(users => {console.log(users)})
-
-verifyValidUser(username)
-.then(users => {console.log(users)})
 
 // getCommentsFromSpecificGame("CS2")
 // .then(games => {console.log(games);})
