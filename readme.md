@@ -1,6 +1,6 @@
-# Project Title
+# Game Score
 
-Welcome to the **[Project Name]** repository! This project uses **JSON Server** to simulate a backend for games and user login. Below are the instructions to set up and run the JSON Server for both games and user authentication.
+Welcome to the **[Game Score]** repository! This project uses **JSON Server** to simulate a backend for games and user login. Below are the instructions to set up and run the JSON Server for both games and user authentication.
 
 ---
 
@@ -13,7 +13,7 @@ Follow these instructions to get the project up and running locally:
 First, ensure that you have `npx` installed. If not, you can install it by running:
 
 ```bash
-npm install -g npx
+npm install
 ```
 
 ### 2. **Start the databases**
