@@ -2,6 +2,7 @@
   "games": [
     {
       "name": "CS2",
+      "image": "",
       "genre": "FPS",
       "avarage_score": 0,
       "graphic_cards": [

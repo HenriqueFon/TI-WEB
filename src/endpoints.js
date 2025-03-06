@@ -18,8 +18,20 @@ function getSpecificGame(name) {
 
             return specificGame;
         })
-        .catch(error => { return `Erro ao adicionar jogo`});
+        .catch(error => { return `Erro ao encontrar jogo`});
 }
+
+//Recupera comentários de um jogo específico dentro do JSON SERVER
+function getCommentsFromSpecificGame(name){
+    return getSpecificGame(name)
+        .then(gameComments => {
+            return gameComments.comments;
+        })
+        .catch(error => {
+            return `Erro ao buscar comentários: ${error}`;
+        });
+}
+
 
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER
 function getGamesByGraphicCard(graphicCardName) {
@@ -49,16 +61,34 @@ function postGames(newGame) {
     })
     .then(response => response.json())
     .then(data => {
-        return `Novo jogo adicionado: ${newGame.nome}`;
+        return `Novo jogo adicionado: ${newGame.name}`;
     })
     .catch(error => { return `Erro ao adicionar jogo`});
 }
 
-console.log(getGames());
+//Exemplo de objeto para cadastro de Jogos
+// {
+//     "name": "",
+//     "image": "",
+//     "genre": "",
+//     "avarage_score": 0,
+//     "graphic_cards": [],
+//     "comments": [],
+//     "id": ""
+//   }
+
+//Exemplo de objeto para criação de comentários
+// {
+//     id: 2,
+//     user: "Carlos",
+//     score: 8,
+//     comment: "Ótimo jogo, gráficos incríveis!"
+// };
 
 module.exports = {
     getGames,
     getSpecificGame,
+    getCommentsFromSpecificGame,
     getGamesByGraphicCard,
     postGames
 };

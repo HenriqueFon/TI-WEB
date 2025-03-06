@@ -1,5 +1,4 @@
-const { getGames, getSpecificGame } = require('./src/endpoints');
+const { getGames, getSpecificGame, getCommentsFromSpecificGame } = require('./src/endpoints');
 
-getGames().then(games => {
-    console.log(games);
-})
+// getCommentsFromSpecificGame("CS2")
+// .then(games => {console.log(games);})
