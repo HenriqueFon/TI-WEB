@@ -1,3 +1,45 @@
+//Valida a entrada do usuário
+function login(username, password) {
+    return fetch('http://localhost:3001/users')
+    .then(response => response.json())
+    .then(userCredentials => {
+        
+        const findUser = userCredentials.find(user => user.username === username);
+
+        if (findUser) {
+            // Verifica se a senha também é válida
+            if (findUser.password === password) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return `User not found`;
+        }
+
+    })
+    .catch(error => { return `Erro ao buscar usuários`});
+}
+
+//Valida se o nome de usuário já foi cadastrado
+function verifyValidUser(username) {
+    return fetch('http://localhost:3001/users')
+    .then(response => response.json())
+    .then(userCredentials => {
+        
+        const findUser = userCredentials.find(user => user.username === username);
+
+        //se usuário for encontrado na base de dados, ele não é valido!
+        if (findUser) {
+            return false;
+        } else {
+            return true;
+        }
+
+    })
+    .catch(error => { return `Erro ao buscar usuários`});
+}
+
 //Recupera todos jogos dentro do JSON SERVER
 function getGames() {
     return fetch('http://localhost:3000/games')
@@ -86,6 +128,8 @@ function postGames(newGame) {
 // };
 
 module.exports = {
+    login,
+    verifyValidUser,
     getGames,
     getSpecificGame,
     getCommentsFromSpecificGame,
