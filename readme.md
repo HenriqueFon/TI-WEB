@@ -18,10 +18,14 @@ npm install
 
 ### 2. **Start the databases**
 
+Second, start the JSON SERVERS database using `json-server`
+
+Game database
 ```bash
 npx json-server --watch data/db.json --port 3000
 ```
 
+Users database
 ```bash
 npx json-server --watch data/auth.json --port 3001
 ```
