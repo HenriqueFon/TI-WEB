@@ -1,20 +1,20 @@
 //Recupera todos jogos dentro do JSON SERVER
 function getGames() {
-    return fetch('http://localhost:3000/jogos')
+    return fetch('http://localhost:3000/games')
         .then(response => response.json())
         .then(game => {
             return game;
         })
-        .catch(error => { return `Erro ao adicionar jogo`});
+        .catch(error => { return `Erro ao buscar jogos`});
 }
 
 //Recupera um jogo específico dentro do JSON SERVER
 function getSpecificGame(name) {
-    return fetch('http://localhost:3000/jogos')
+    return fetch('http://localhost:3000/games')
         .then(response => response.json())
         .then(game => {
             
-            const specificGame = game.find(jogo => jogo.nome.toLowerCase() === name.toLowerCase());
+            const specificGame = game.find(specific => specific.name.toLowerCase() === name.toLowerCase());
 
             return specificGame;
         })
@@ -23,13 +23,13 @@ function getSpecificGame(name) {
 
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER
 function getGamesByGraphicCard(graphicCardName) {
-    return fetch('http://localhost:3000/jogos')
+    return fetch('http://localhost:3000/games')
         .then(response => response.json())
         .then(jogos => {
             
-            const filteredGames = jogos.filter(jogo => 
-                jogo.placas_compativeis && 
-                jogo.placas_compativeis.map(placa => placa.toUpperCase())
+            const filteredGames = jogos.filter(filtered => 
+                filtered.graphic_cards && 
+                filtered.graphic_cards.map(card => card.toUpperCase())
                 .includes(graphicCardName.toUpperCase())
             );
             
@@ -40,7 +40,7 @@ function getGamesByGraphicCard(graphicCardName) {
 
 //Cadastra um novo jogo dentro do JSON SERVER
 function postGames(newGame) {
-    return fetch('http://localhost:3000/jogos', {
+    return fetch('http://localhost:3000/games', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
