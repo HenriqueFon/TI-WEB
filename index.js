@@ -1,68 +1,35 @@
-const { getGames, getSpecificGame } = require('./endpoint');
+const { login, createNewUser } = require('./src/endpoints');
+const { generateUniqueId } = require('./src/utils');
 
-getGames().then(games => console.log(games));
-getSpecificGame('Minecraft').then(game => console.log(game));
+let username = "Henrique";
+let password = "Password123"
 
-function getGames() {
-    return fetch('http://localhost:3000/jogos')
-        .then(response => response.json())
-        .then(game => {
-            return game;
-        })
-        .catch(error => console.error('Erro ao buscar jogos:', error));
+let userId;
+
+generateUniqueId().then(Id => {userId = Id})
+
+
+const newUser = {
+    "id": userId,
+    "username": "Henrique",
+    "password": "Password123",
+    "image": "",
+    "favorite_genres":["RPG"],
+    "favorite_games":[],
+    "spec": {
+        "processor": "Intel(R) Core(TM) i7-10700KF CPU @ 3.80GHz",
+        "ram": "16GB DDR4",
+        "graphic_cards": "NVIDIA GeForce RTX 3070",
+        "storage": "1TB SSD",
+        "operating_system": "Windows 11"
+    }
 }
 
-function getSpecificGame(name) {
-    return fetch('http://localhost:3000/jogos')
-        .then(response => response.json())
-        .then(game => {
-            
-            const specificGame = game.find(jogo => jogo.nome.toLowerCase() === name.toLowerCase());
+createNewUser(newUser)
+.then(users => {console.log(users)})
 
-            return specificGame;
-        })
-        .catch(error => console.error('Erro ao buscar jogos:', error));
-}
+// login(username, password)
+// .then(users => {console.log(users)})
 
-function getGamesByGraphicCard(graphicCardName) {
-    return fetch('http://localhost:3000/jogos')
-        .then(response => response.json())
-        .then(jogos => {
-            
-            const filteredGames = jogos.filter(jogo => 
-                jogo.placas_compativeis && 
-                jogo.placas_compativeis.map(placa => placa.toUpperCase())
-                .includes(graphicCardName.toUpperCase())
-            );
-            
-            return filteredGames; 
-        })
-        .catch(error => {'Erro ao buscar jogos:', error});
-}
-
-
-function postGames(newGame) {
-    return fetch('http://localhost:3000/jogos', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newGame)
-    })
-    .then(response => response.json())
-    .then(data => {
-        return `Novo jogo adicionado: ${newGame.nome}`;
-    })
-    .catch(error => { return `Erro ao adicionar jogo`});
-}
-
-const newGame = {
-    "nome": "Cyberpunk 2077",
-    "genero": "RPG"
-};
-
-getGamesByGraphicCard("RTX 3060").then(games =>{console.log(games)});
-
-
-
-    
+// getCommentsFromSpecificGame("CS2")
+// .then(games => {console.log(games);})
