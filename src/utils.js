@@ -48,10 +48,9 @@ function getUserId(username) {
     .then(userCredentials => {
         
         const findUser = userCredentials.find(user => user.username === username);
-
         
         if (findUser) {
-            return findUser.Id;
+            return findUser.id;
         } else {
             return "Não foi possível encontrar o Id do usuário";
         }

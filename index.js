@@ -9,8 +9,10 @@ let userId;
 getUserId(username)
 .then(Id => {userId = Id})
 
+
+
 let userComment = {
-    "id": userId,
+    "id": 1,
     "user": username,
     "score": 8,
     "comment": "Teste"
