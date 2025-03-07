@@ -41,8 +41,28 @@ function generateRandomNumber() {
     return randomNumber;
 }
 
+//Pega o Id do usuário
+function getUserId(username) {
+    return fetch('http://localhost:3001/users')
+    .then(response => response.json())
+    .then(userCredentials => {
+        
+        const findUser = userCredentials.find(user => user.username === username);
+
+        
+        if (findUser) {
+            return findUser.Id;
+        } else {
+            return "Não foi possível encontrar o Id do usuário";
+        }
+
+    })
+    .catch(error => { return `Erro ao buscar usuários`});
+}
+
 
 module.exports = {
     verifyValidUserForRegister,
-    generateUniqueId
+    generateUniqueId,
+    getUserId
 };

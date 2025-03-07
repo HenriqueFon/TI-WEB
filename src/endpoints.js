@@ -68,7 +68,7 @@ function getSpecificGame(name) {
 }
 
 //Recupera comentários de um jogo específico dentro do JSON SERVER
-function getCommentsFromSpecificGame(name){
+function getCommentsFromSpecificGame(name) {
     return getSpecificGame(name)
         .then(gameComments => {
             return gameComments.comments;
@@ -78,6 +78,34 @@ function getCommentsFromSpecificGame(name){
         });
 }
 
+//Cria um novo comentário para um jogo
+function createCommentFromSpecificGame(gameName, comment) {
+    return getSpecificGame(gameName)
+        .then(game => {
+            if (!game) {
+                throw new Error(`Jogo ${gameName} não encontrado`);
+            }
+
+            const updatedComments = [...(game.comments || []), comment];
+
+            return fetch(`http://localhost:3000/games/${game.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ comments: updatedComments })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro ao adicionar comentário`);
+                }
+                return `Comentário adicionado ao jogo ${game.name}`;
+            });
+        })
+        .catch(error => {
+            return `Erro ao adicionar comentário: ${error.message}`;
+        });
+}
 
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER
 function getGamesByGraphicCard(graphicCardName) {
@@ -137,6 +165,7 @@ module.exports = {
     getGames,
     getSpecificGame,
     getCommentsFromSpecificGame,
+    createCommentFromSpecificGame,
     getGamesByGraphicCard,
     postGames
 };
