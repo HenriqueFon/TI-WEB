@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 const { verifyValidUserForRegister } = require('./utils');
 
-const games_url = "http://localhost:3000";
-const users_url = "http://localhost:3001";
+const games_url = process.env.GAMES_URL;
+const users_url = process.env.USERS_URL;
 
 //Valida a entrada do usuário
 function login(username, password) {
@@ -91,7 +93,7 @@ function createCommentFromSpecificGame(gameName, comment) {
 
             const updatedComments = [...(game.comments || []), comment];
 
-            return fetch(`${games_url}/games/games/${game.id}`, {
+            return fetch(`${games_url}/games/${game.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

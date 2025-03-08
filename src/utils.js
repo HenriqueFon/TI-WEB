@@ -1,6 +1,11 @@
+require('dotenv').config();
+
+const games_url = process.env.GAMES_URL;
+const users_url = process.env.USERS_URL;
+
 //Valida se o nome de usuário já foi cadastrado
 function verifyValidUserForRegister(username) {
-    return fetch('http://localhost:3001/users')
+    return fetch(`${users_url}/users`)
     .then(response => response.json())
     .then(userCredentials => {
         
@@ -19,7 +24,7 @@ function verifyValidUserForRegister(username) {
 
 //Gera um número aleatório para ser o Id do usuário dentro do Banco de dados
 function generateUniqueId() {
-    return fetch('http://localhost:3001/users')
+    return fetch(`${users_url}/users`)
     .then(response => response.json())
     .then(userCredentials => {
 
@@ -43,7 +48,7 @@ function generateRandomNumber() {
 
 //Pega o Id do usuário
 function getUserId(username) {
-    return fetch('http://localhost:3001/users')
+    return fetch(`${users_url}/users`)
     .then(response => response.json())
     .then(userCredentials => {
         
