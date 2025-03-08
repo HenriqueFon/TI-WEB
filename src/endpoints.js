@@ -1,8 +1,11 @@
 const { verifyValidUserForRegister } = require('./utils');
 
+const games_url = "http://localhost:3000";
+const users_url = "http://localhost:3001";
+
 //Valida a entrada do usuário
 function login(username, password) {
-    return fetch('http://localhost:3001/users')
+    return fetch(`${users_url}/users`)
     .then(response => response.json())
     .then(userCredentials => {
         
@@ -26,7 +29,7 @@ function login(username, password) {
 //Cria um novo usuário
 function createNewUser(newUser) {
     if(verifyValidUserForRegister(newUser.usename)) {
-        return fetch('http://localhost:3001/users', {
+        return fetch(`${users_url}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +49,7 @@ function createNewUser(newUser) {
 
 //Recupera todos jogos dentro do JSON SERVER
 function getGames() {
-    return fetch('http://localhost:3000/games')
+    return fetch(`${games_url}/games`)
         .then(response => response.json())
         .then(game => {
             return game;
@@ -56,7 +59,7 @@ function getGames() {
 
 //Recupera um jogo específico dentro do JSON SERVER
 function getSpecificGame(name) {
-    return fetch('http://localhost:3000/games')
+    return fetch(`${games_url}/games`)
         .then(response => response.json())
         .then(game => {
             
@@ -88,7 +91,7 @@ function createCommentFromSpecificGame(gameName, comment) {
 
             const updatedComments = [...(game.comments || []), comment];
 
-            return fetch(`http://localhost:3000/games/${game.id}`, {
+            return fetch(`${games_url}/games/games/${game.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -109,7 +112,7 @@ function createCommentFromSpecificGame(gameName, comment) {
 
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER
 function getGamesByGraphicCard(graphicCardName) {
-    return fetch('http://localhost:3000/games')
+    return fetch(`${games_url}/games`)
         .then(response => response.json())
         .then(jogos => {
             
@@ -126,7 +129,7 @@ function getGamesByGraphicCard(graphicCardName) {
 
 //Cadastra um novo jogo dentro do JSON SERVER
 function postGames(newGame) {
-    return fetch('http://localhost:3000/games', {
+    return fetch(`${games_url}/games`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
