@@ -1,0 +1,14 @@
+.header {
+    background:var(--gray-800);
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
