@@ -1,4 +1,4 @@
-import { generateRandomNumber } from './util.js';
+import { generateRandomNumber } from './utils.js';
 
 const games_url = "http://localhost:3000";
 const users_url = "http://localhost:3001";
