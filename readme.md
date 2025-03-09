@@ -1,6 +1,6 @@
-# Game Score
+# Gamer Score
 
-Welcome to the **[Game Score]** repository! This project uses **JSON Server** to simulate a backend for games and user login. Below are the instructions to set up and run the JSON Server for both games and user authentication.
+Welcome to the **[Gamer Score]** repository! This project uses **JSON Server** to simulate a backend for games and user login. Below are the instructions to set up and run the JSON Server for both games and user authentication.
 
 ---
 

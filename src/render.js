@@ -1,25 +1,32 @@
-const { login, createNewUser, createCommentFromSpecificGame } = require('./src/endpoints');
-const { generateUniqueId, getUserId } = require('./src/utils');
+import { createCommentFromSpecificGame, generateUniqueId, getUserId } from './endpoints.js';
 
 let username = "Henrique";
 let password = "Password123"
 
-let userId;
-
-getUserId(username)
-.then(Id => {userId = Id})
-
-
-
-let userComment = {
-    "id": 1,
-    "user": username,
-    "score": 8,
-    "comment": "Teste"
+const teste = () => {
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".header h1").textContent = "Dev Score";
+        console.log("teste")
+    });
 }
 
-createCommentFromSpecificGame("CS2", userComment)
-.then(comment => {console.log(comment)})
+teste();
+// let userId;
+
+// getUserId(username)
+// .then(Id => {userId = Id})
+
+
+// let userComment = {
+//     "id": 1,
+//     "user": username,
+//     "score": 8,
+//     "comment": "Teste"
+// }
+
+
+// createCommentFromSpecificGame("CS2", userComment)
+// .then(comment => {console.log(comment)})
 
 // generateUniqueId().then(Id => {userId = Id})
 
