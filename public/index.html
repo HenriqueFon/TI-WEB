@@ -7,18 +7,80 @@
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/nav.css">
-    
-    <title>Game Score</title>
+    <link rel="stylesheet" href="./styles/aside.css">
+    <link rel="stylesheet" href="./styles/post.css">
+    <link rel="stylesheet" href="./styles/wrapper.css">
+
+    <title>Gamer Score</title>
 </head>
-<header class="header">
-    <h1>Gamer Score</h1>
-    <nav class="nav">
-        <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Jogos</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</header>
+<body>
+    <div class = "wrapper">
+        <header class="header">
+            <h1>Gamer Score</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#">Jogos</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <aside class ="sidebar">
+                <img class="cover" 
+                    src = "Assets/cover-photo.png" 
+                    alt="background-photo" 
+                />
+                <div class="profile">
+                    <img class="avatar" src="Assets/my-photo.jpg" />
+
+                    <strong>Henrique Fonseca </strong>
+                    <span>Gamer</span>
+                </div>
+
+                <footer>
+                    <a href='#'>
+                        Editar seu perfil
+                    </a>
+                </footer>
+            </aside>
+            <main>
+                <article class="post">
+                    <header>
+                        <div class="author">
+                            <img class="avatar" src="Assets/my-photo.jpg" />
+                            <div class="authorInfo">
+                                <strong>Jane Cooper</strong>
+                                <span>Dev Front-End</span>
+                            </div>
+                        </div>
+
+                        <time dateTime="2024-02-24 08:36">Publicado há 1h</time>
+
+                    </header>
+
+                    <div class="content">
+                        <p>Fala galeraa 👋</p>
+                        
+                        <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
+
+                        <p>
+                            <a href=''>#novoprojeto</a>{' '}
+                            <a href=''>#nlw</a>{' '}
+                        </p>
+                    </div>
+
+                    <form class="commentForm">
+                        <strong>
+                            <textarea placeholder='Deixe um comentário'>
+                                
+                            </textarea>
+                            <button type = "submit">Comentar</button>
+                        </strong>
+                    </form>
+
+                </article>
+            </main>
+        </header>
+    </div>
+</body>
 </html>
