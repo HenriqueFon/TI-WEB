@@ -1,8 +1,11 @@
-const { verifyValidUserForRegister } = require('./utils');
+import { generateRandomNumber } from './utils.js';
+
+const games_url = "http://localhost:3000";
+const users_url = "http://localhost:3001";
 
 //Valida a entrada do usuário
-function login(username, password) {
-    return fetch('http://localhost:3001/users')
+export function login(username, password) {
+    return fetch(`${users_url}/users`)
     .then(response => response.json())
     .then(userCredentials => {
         
@@ -24,9 +27,9 @@ function login(username, password) {
 }
 
 //Cria um novo usuário
-function createNewUser(newUser) {
+export function createNewUser(newUser) {
     if(verifyValidUserForRegister(newUser.usename)) {
-        return fetch('http://localhost:3001/users', {
+        return fetch(`${users_url}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,8 +48,8 @@ function createNewUser(newUser) {
 }
 
 //Recupera todos jogos dentro do JSON SERVER
-function getGames() {
-    return fetch('http://localhost:3000/games')
+export function getGames() {
+    return fetch(`${games_url}/games`)
         .then(response => response.json())
         .then(game => {
             return game;
@@ -55,8 +58,8 @@ function getGames() {
 }
 
 //Recupera um jogo específico dentro do JSON SERVER
-function getSpecificGame(name) {
-    return fetch('http://localhost:3000/games')
+export function getSpecificGame(name) {
+    return fetch(`${games_url}/games`)
         .then(response => response.json())
         .then(game => {
             
@@ -68,7 +71,7 @@ function getSpecificGame(name) {
 }
 
 //Recupera comentários de um jogo específico dentro do JSON SERVER
-function getCommentsFromSpecificGame(name){
+export function getCommentsFromSpecificGame(name) {
     return getSpecificGame(name)
         .then(gameComments => {
             return gameComments.comments;
@@ -78,10 +81,38 @@ function getCommentsFromSpecificGame(name){
         });
 }
 
+//Cria um novo comentário para um jogo
+export function createCommentFromSpecificGame(gameName, comment) {
+    return getSpecificGame(gameName)
+        .then(game => {
+            if (!game) {
+                throw new Error(`Jogo ${gameName} não encontrado`);
+            }
+
+            const updatedComments = [...(game.comments || []), comment];
+
+            return fetch(`${games_url}/games/${game.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ comments: updatedComments })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro ao adicionar comentário`);
+                }
+                return `Comentário adicionado ao jogo ${game.name}`;
+            });
+        })
+        .catch(error => {
+            return `Erro ao adicionar comentário: ${error.message}`;
+        });
+}
 
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER
-function getGamesByGraphicCard(graphicCardName) {
-    return fetch('http://localhost:3000/games')
+export function getGamesByGraphicCard(graphicCardName) {
+    return fetch(`${games_url}/games`)
         .then(response => response.json())
         .then(jogos => {
             
@@ -97,8 +128,8 @@ function getGamesByGraphicCard(graphicCardName) {
 }
 
 //Cadastra um novo jogo dentro do JSON SERVER
-function postGames(newGame) {
-    return fetch('http://localhost:3000/games', {
+export function postGames(newGame) {
+    return fetch(`${games_url}/games`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -111,6 +142,64 @@ function postGames(newGame) {
     })
     .catch(error => { return `Erro ao adicionar jogo`});
 }
+
+//Valida se o nome de usuário já foi cadastrado
+export function verifyValidUserForRegister(username) {
+    return fetch(`${users_url}/users`)
+    .then(response => response.json())
+    .then(userCredentials => {
+        
+        const findUser = userCredentials.find(user => user.username === username);
+
+        //se usuário for encontrado na base de dados, ele não é valido!
+        if (findUser) {
+            return false;
+        } else {
+            return true;
+        }
+
+    })
+    .catch(error => { return `Erro ao buscar usuários`});
+}
+
+//Gera um número aleatório para ser o Id do usuário dentro do Banco de dados
+export function generateUniqueId() {
+    return fetch(`${users_url}/users`)
+    .then(response => response.json())
+    .then(userCredentials => {
+
+        let uniqueId;
+
+        do {
+            uniqueId = generateRandomNumber();
+        } while (userCredentials.some(user => user.id == uniqueId));
+
+        return uniqueId;
+
+    })
+    .catch(error => { return `Erro ao buscar usuários`});
+}
+
+//Pega o Id do usuário
+export function getUserId(username) {
+    return fetch(`${users_url}/users`)
+    .then(response => response.json())
+    .then(userCredentials => {
+        
+        const findUser = userCredentials.find(user => user.username === username);
+        
+        if (findUser) {
+            return findUser.id;
+        } else {
+            return "Não foi possível encontrar o Id do usuário";
+        }
+
+    })
+    .catch(error => { return `Erro ao buscar usuários`});
+}
+
+
+
 
 //Exemplo de objeto para cadastro de Jogos
 // {
@@ -131,12 +220,3 @@ function postGames(newGame) {
 //     comment: "Ótimo jogo, gráficos incríveis!"
 // };
 
-module.exports = {
-    login,
-    createNewUser,
-    getGames,
-    getSpecificGame,
-    getCommentsFromSpecificGame,
-    getGamesByGraphicCard,
-    postGames
-};
