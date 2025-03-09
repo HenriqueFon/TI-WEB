@@ -1,4 +1,4 @@
-import { createCommentFromSpecificGame, generateUniqueId, getUserId, login } from './endpoints.js';
+import { createCommentFromSpecificGame, generateUniqueId, getSpecificGame, getUserId, login } from './endpoints.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -10,23 +10,25 @@ const teste = () => {
     });
 }
 
-teste();
+
+getSpecificGame("CS2").then(game => {console.log(game)})
+
 // let userId;
 
 // getUserId(username)
 // .then(Id => {userId = Id})
 
 
-// let userComment = {
-//     "id": 1,
-//     "user": username,
-//     "score": 8,
-//     "comment": "Teste"
-// }
+let userComment = {
+    "id": 1,
+    "user": username,
+    "score": 8,
+    "comment": "Teste"
+}
 
 
-// createCommentFromSpecificGame("CS2", userComment)
-// .then(comment => {console.log(comment)})
+// createCommentFromSpecificGame("CS2", userComment).then(message => {console.log(message)})
+
 
 // generateUniqueId().then(Id => {userId = Id})
 

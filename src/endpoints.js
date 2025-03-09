@@ -51,6 +51,7 @@ export async function getGames() {
 export async function getSpecificGame(name) {
     try {
         const games = await apiGet(`${games_url}/games`);
+
         const specificGame = games.find(game => game.name.toLowerCase() === name.toLowerCase());
         return specificGame;
     } catch (error) {
@@ -72,13 +73,14 @@ export async function getCommentsFromSpecificGame(name) {
 export async function createCommentFromSpecificGame(gameName, comment) {
     try {
         const game = await getSpecificGame(gameName);
+
         if (!game) {
             throw new Error(`Jogo ${gameName} não encontrado`);
         }
 
         const updatedComments = [...(game.comments || []), comment];
 
-        const response = await apiPatch(`${games_url}/games/${game.id}`, updatedComments);
+        const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: updatedComments });
 
         if (!response.ok) {
             throw new Error(`Erro ao adicionar comentário`);
