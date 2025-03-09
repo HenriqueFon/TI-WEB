@@ -1,4 +1,4 @@
-import { createCommentFromSpecificGame, generateUniqueId, getUserId } from './endpoints.js';
+import { createCommentFromSpecificGame, generateUniqueId, getUserId, login } from './endpoints.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -50,8 +50,8 @@ teste();
 // createNewUser(newUser)
 // .then(users => {console.log(users)})
 
-// login(username, password)
-// .then(users => {console.log(users)})
+login(username, password)
+.then(users => {console.log(users)})
 
 // getCommentsFromSpecificGame("CS2")
 // .then(games => {console.log(games);})
