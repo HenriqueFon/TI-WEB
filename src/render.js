@@ -1,5 +1,5 @@
 import { login } from './endpoints.js';
-import { translatePage, createPost } from './utils.js';
+import { translatePage, createPost, createSidebarPerfil } from './utils.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -12,15 +12,24 @@ const teste = () => {
     });
 }
 
-translatePage("en-us")
+createSidebarPerfil(
+    "../assets/cover-photo.png",
+    "../assets/my-photo.jpg",
+    "Henrique",
+    "Moderador"
+)
 
-createPost("Henrique Fonseca",
+createPost(
+    "Henrique Fonseca",
     "Gamer",
     "../assets/my-photo.jpg",
     "Publicado há 1h",
     [
-        "Teste"
-    ])
+        `"Cave, lute, explore, construa!" – Esse é o lema de Terraria, um jogo indie de ação e aventura lançado em 2011 pela Re-Logic. O título pode ser descrito como uma fusão entre Minecraft e Metroidvania, combinando construção e exploração em um mundo gerado proceduralmente. Mas Terraria vai além de ser apenas um "Minecraft 2D", oferecendo mecânicas profundas de progressão, combate e criatividade que o tornam único.`
+    ]
+)
+
+translatePage("en-us")
 
 
 // let userId;

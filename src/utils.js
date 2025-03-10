@@ -48,16 +48,30 @@ export function createPost(authorName, authorRole, avatarSrc, postTime, postCont
         <div class="content">
             ${postContent.map(text => `<p>${text}</p>`).join("")}
         </div>
-
-        <form class="commentForm">
-            <textarea placeholder="Deixe um comentário" data-translate-placeholder="comment-placeholder"></textarea>
-            <button type="submit" data-translate="comment-button">Comentar</button>
-        </form>
     `;
-
-    console.log(post.innerHTML)
 
     // Adicionando o post ao <main>
     document.querySelector("main").appendChild(post);
+}
+
+export function createSidebarPerfil(coverImage, avatarImage, name, comment) {
+
+    const perfil = document.createElement("aside");
+    perfil.classList.add("sidebar");
+
+    perfil.innerHTML = `
+        <img class="cover" src="${coverImage}" alt="background-photo">
+        <div class="profile">
+            <img class="avatar" src="${avatarImage}">
+            <strong>${name}</strong>
+            <span>${comment}</span>
+        </div>
+        <footer>
+            <a href="#" data-translate = "profile-edit">Editar seu perfil</a>
+        </footer>
+    `;
+
+    document.querySelector(".wrapper").prepend(perfil);
+    
 }
 
