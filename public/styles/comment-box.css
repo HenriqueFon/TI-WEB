@@ -4,3 +4,35 @@
     padding: 2.5rem;
     margin-bottom: 2rem;
 }
+
+.commentBoxForm {
+    width: 100%;
+}
+
+.commentBoxForm > strong {
+    line-height: 1.6;
+    color: var(--gray-100);
+
+}
+
+.commentBoxForm textarea {
+    width: 100%;
+    background: var(--gray-900);
+    border: 0;
+    resize: none;
+    height: 6rem;
+    padding: 1rem;
+    border-radius: 8px;
+    color: var(--gray-100);
+    line-height: 1.4;
+    margin-top: 1rem;
+}
+
+.commentBoxForm button[type=submit] {
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    border: 0;
+    background: var(--green-500);
+    font-weight: bold;
+}
