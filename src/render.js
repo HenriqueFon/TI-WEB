@@ -1,5 +1,5 @@
-import { createCommentFromSpecificGame, generateUniqueId, getSpecificGame, getUserId, login } from './endpoints.js';
-import { translatePage } from './utils.js';
+import { login } from './endpoints.js';
+import { translatePage, createPost } from './utils.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -13,6 +13,14 @@ const teste = () => {
 }
 
 translatePage("en-us")
+
+createPost("Henrique Fonseca",
+    "Gamer",
+    "../assets/my-photo.jpg",
+    "Publicado há 1h",
+    [
+        "Teste"
+    ])
 
 
 // let userId;

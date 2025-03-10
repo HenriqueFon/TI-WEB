@@ -18,5 +18,15 @@ export const translations = {
         "comment-placeholder": "Deixe um comentário",
         "comment-button": "Comentar",
         "post-time": "Publicado 1 hora atrás"
-    }
+    },
+    "jp": {
+        "title": "Gamer Score",
+        "nav-home": "Home",
+        "nav-games": "Games",
+        "nav-ranking": "Ranking",
+        "profile-edit": "Edit your profile",
+        "comment-placeholder": "Leave a comment",
+        "comment-button": "Comment",
+        "post-time": "Published 1 hour ago"
+    },
 }
