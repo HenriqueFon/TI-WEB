@@ -13,18 +13,19 @@
     <link rel="stylesheet" href="../styles/aside.css">
     <link rel="stylesheet" href="../styles/post.css">
     <link rel="stylesheet" href="../styles/wrapper.css">
+    <link rel="stylesheet" href="../styles/comment-box.css">
 
     <script src="../../src/render.js" type= "module" defer></script>
 </head>
 <body>
 
     <header class="header">
-        <h1>Gamer Score</h1>
+        <h1 data-translate = "title">Gamer Score</h1>
         <nav class="nav">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Jogos</a></li>
-                <li><a href="#">Ranking</a></li>
+                <li data-translate = "nav-home"><a href="#">Início</a></li>
+                <li data-translate = "nav-games"><a href="#">Jogos</a></li>
+                <li data-translate = "nav-ranking"><a href="#">Ranking</a></li>
             </ul>
         </nav>
     </header>
@@ -37,11 +38,17 @@
                 <span>Gamer</span>
             </div>
             <footer>
-                <a href="#">Editar seu perfil</a>
+                <a href="#" data-translate = "profile-edit">Editar seu perfil</a>
             </footer>
         </aside>
 
         <main>
+            <article class = "comment-box">
+                <form class="commentForm">
+                    <textarea placeholder="Deixe um comentário" data-translate-placeholder = "comment-placeholder"></textarea>
+                    <button type="submit" data-translate = "comment-button">Comentar</button>
+                </form>
+            </article>
             <article class="post">
                 <header>
                     <div class="author">
@@ -51,8 +58,9 @@
                             <span>Gamer</span>
                         </div>
                     </div>
-                    <time dateTime="2024-02-24 08:36">Publicado há 1h</time>
+                    <time dateTime="2024-02-24 08:36" data-translate = "post-time">Publicado há 1h</time>
                 </header>
+                
 
                 <div class="content">
                     <p>Fala galeraa 👋</p>
@@ -64,8 +72,8 @@
                 </div>
 
                 <form class="commentForm">
-                    <textarea placeholder="Deixe um comentário"></textarea>
-                    <button type="submit">Comentar</button>
+                    <textarea placeholder="Deixe um comentário" data-translate-placeholder = comment-placeholder></textarea>
+                    <button type="submit" data-translate = "comment-button">Comentar</button>
                 </form>
 
             </article>

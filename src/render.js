@@ -1,4 +1,5 @@
 import { createCommentFromSpecificGame, generateUniqueId, getSpecificGame, getUserId, login } from './endpoints.js';
+import { translatePage } from './utils.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -6,12 +7,13 @@ let password = "Password123"
 const teste = () => {
     document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".header h1").textContent = "Dev Score";
+        const contentElement = document.querySelector('.post .content').textContent = "teste";
         console.log("teste")
     });
 }
 
+translatePage("en-us")
 
-getSpecificGame("CS2").then(game => {console.log(game)})
 
 // let userId;
 
