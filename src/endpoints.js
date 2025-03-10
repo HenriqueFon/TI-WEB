@@ -1,18 +1,15 @@
 import { generateRandomNumber } from './utils.js';
+import { apiGet, apiPatch, apiPost } from './api.js';
 
 const games_url = "http://localhost:3000";
 const users_url = "http://localhost:3001";
 
 //Valida a entrada do usuário
-export function login(username, password) {
-    return fetch(`${users_url}/users`)
-    .then(response => response.json())
-    .then(userCredentials => {
-        
+export async function login(username, password) {
+    try {
+        const userCredentials = await apiGet(`${users_url}/users`);
         const findUser = userCredentials.find(user => user.username === username);
-
         if (findUser) {
-            // Verifica se a senha também é válida
             if (findUser.password === password) {
                 return true;
             } else {
@@ -21,134 +18,116 @@ export function login(username, password) {
         } else {
             return `User not found`;
         }
-
-    })
-    .catch(error => { return `Erro ao buscar usuários`});
+    } catch (error) {
+        return `Erro ao buscar usuários: ${error.message}`;
+    }
 }
 
 //Cria um novo usuário
-export function createNewUser(newUser) {
-    if(verifyValidUserForRegister(newUser.usename)) {
-        return fetch(`${users_url}/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newUser)
-        })
-        .then(response => response.json())
-        .then(data => {
-            return `Novo usuário adicionado: ${newUser.usename}`;
-        })
-        .catch(error => { return `Erro ao adicionar novo usuário ${error}`});
-
-    } else {
-        return "Usuário com nome indetico já cadastrado!";
+export async function createNewUser(newUser) {
+    try {
+        if (await verifyValidUserForRegister(newUser.username)) {
+            await apiPost(`${users_url}/users`, newUser);
+            return `Novo usuário adicionado: ${newUser.username}`;
+        } else {
+            return "Usuário com nome idêntico já cadastrado!";
+        }
+    } catch (error) {
+        return `Erro ao adicionar novo usuário: ${error.message}`;
     }
 }
 
 //Recupera todos jogos dentro do JSON SERVER
-export function getGames() {
-    return fetch(`${games_url}/games`)
-        .then(response => response.json())
-        .then(game => {
-            return game;
-        })
-        .catch(error => { return `Erro ao buscar jogos`});
+export async function getGames() {
+    try {
+        const games = await apiGet(`${games_url}/games`);
+
+        return games;
+    } catch (error) {
+        return `Erro ao buscar jogos: ${error.message}`;
+    }
 }
 
 //Recupera um jogo específico dentro do JSON SERVER
-export function getSpecificGame(name) {
-    return fetch(`${games_url}/games`)
-        .then(response => response.json())
-        .then(game => {
-            
-            const specificGame = game.find(specific => specific.name.toLowerCase() === name.toLowerCase());
+export async function getSpecificGame(name) {
+    try {
+        const games = await apiGet(`${games_url}/games`);
 
-            return specificGame;
-        })
-        .catch(error => { return `Erro ao encontrar jogo`});
+        const specificGame = games.find(game => game.name.toLowerCase() === name.toLowerCase());
+        return specificGame;
+    } catch (error) {
+        return `Erro ao encontrar jogo: ${error.message}`;
+    }
 }
 
 //Recupera comentários de um jogo específico dentro do JSON SERVER
-export function getCommentsFromSpecificGame(name) {
-    return getSpecificGame(name)
-        .then(gameComments => {
-            return gameComments.comments;
-        })
-        .catch(error => {
-            return `Erro ao buscar comentários: ${error}`;
-        });
+export async function getCommentsFromSpecificGame(name) {
+    try {
+        const game = await getSpecificGame(name);
+        return game ? game.comments : [];
+    } catch (error) {
+        return `Erro ao buscar comentários: ${error.message}`;
+    }
 }
 
 //Cria um novo comentário para um jogo
-export function createCommentFromSpecificGame(gameName, comment) {
-    return getSpecificGame(gameName)
-        .then(game => {
-            if (!game) {
-                throw new Error(`Jogo ${gameName} não encontrado`);
-            }
+export async function createCommentFromSpecificGame(gameName, comment) {
+    try {
+        const game = await getSpecificGame(gameName);
 
-            const updatedComments = [...(game.comments || []), comment];
+        if (!game) {
+            throw new Error(`Jogo ${gameName} não encontrado`);
+        }
 
-            return fetch(`${games_url}/games/${game.id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ comments: updatedComments })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro ao adicionar comentário`);
-                }
-                return `Comentário adicionado ao jogo ${game.name}`;
-            });
-        })
-        .catch(error => {
-            return `Erro ao adicionar comentário: ${error.message}`;
-        });
+        const updatedComments = [...(game.comments || []), comment];
+
+        const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: updatedComments });
+
+        if (!response.ok) {
+            throw new Error(`Erro ao adicionar comentário`);
+        }
+
+        return `Comentário adicionado ao jogo ${game.name}`;
+    } catch (error) {
+        return `Erro ao adicionar comentário: ${error.message}`;
+    }
 }
 
+
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER
-export function getGamesByGraphicCard(graphicCardName) {
-    return fetch(`${games_url}/games`)
-        .then(response => response.json())
-        .then(jogos => {
-            
-            const filteredGames = jogos.filter(filtered => 
-                filtered.graphic_cards && 
-                filtered.graphic_cards.map(card => card.toUpperCase())
+export async function getGamesByGraphicCard(graphicCardName) {
+    try {
+        const jogos = await apiGet(`${games_url}/games`);
+        // const jogosData = await jogos.json();
+
+        const filteredGames = jogos.filter(filtered =>
+            filtered.graphic_cards &&
+            filtered.graphic_cards.map(card => card.toUpperCase())
                 .includes(graphicCardName.toUpperCase())
-            );
-            
-            return filteredGames; 
-        })
-        .catch(error => {'Erro ao buscar jogos:', error});
+        );
+
+        return filteredGames;
+    } catch (error) {
+        return `Erro ao buscar jogos: ${error.message}`;
+    }
 }
 
 //Cadastra um novo jogo dentro do JSON SERVER
-export function postGames(newGame) {
-    return fetch(`${games_url}/games`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newGame)
-    })
-    .then(response => response.json())
-    .then(data => {
+export async function postGames(newGame) {
+    try {
+        const response = await apiPost(`${games_url}/games`, newGame);
+
+        const data = response;
         return `Novo jogo adicionado: ${newGame.name}`;
-    })
-    .catch(error => { return `Erro ao adicionar jogo`});
+    } catch (error) {
+        return `Erro ao adicionar jogo: ${error.message}`;
+    }
 }
 
 //Valida se o nome de usuário já foi cadastrado
-export function verifyValidUserForRegister(username) {
-    return fetch(`${users_url}/users`)
-    .then(response => response.json())
-    .then(userCredentials => {
-        
+export async function verifyValidUserForRegister(username) {
+    try {
+        const userCredentials = await apiGet(`${users_url}/users`);
         const findUser = userCredentials.find(user => user.username === username);
 
         //se usuário for encontrado na base de dados, ele não é valido!
@@ -158,16 +137,15 @@ export function verifyValidUserForRegister(username) {
             return true;
         }
 
-    })
-    .catch(error => { return `Erro ao buscar usuários`});
+    } catch (error) {
+        return `Erro ao buscar usuários: ${error.message}`;
+    }
 }
 
 //Gera um número aleatório para ser o Id do usuário dentro do Banco de dados
-export function generateUniqueId() {
-    return fetch(`${users_url}/users`)
-    .then(response => response.json())
-    .then(userCredentials => {
-
+export async function generateUniqueId() {
+    try {
+        const userCredentials = await apiGet(`${users_url}/users`);
         let uniqueId;
 
         do {
@@ -175,27 +153,25 @@ export function generateUniqueId() {
         } while (userCredentials.some(user => user.id == uniqueId));
 
         return uniqueId;
-
-    })
-    .catch(error => { return `Erro ao buscar usuários`});
+    } catch (error) {
+        return `Erro ao buscar usuários: ${error.message}`;
+    }
 }
 
 //Pega o Id do usuário
-export function getUserId(username) {
-    return fetch(`${users_url}/users`)
-    .then(response => response.json())
-    .then(userCredentials => {
-        
+export async function getUserId(username) {
+    try {
+        const userCredentials = await apiGet(`${users_url}/users`);
         const findUser = userCredentials.find(user => user.username === username);
-        
+
         if (findUser) {
             return findUser.id;
         } else {
             return "Não foi possível encontrar o Id do usuário";
         }
-
-    })
-    .catch(error => { return `Erro ao buscar usuários`});
+    } catch (error) {
+        return `Erro ao buscar usuários: ${error.message}`;
+    }
 }
 
 
