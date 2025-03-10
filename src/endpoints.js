@@ -41,6 +41,7 @@ export async function createNewUser(newUser) {
 export async function getGames() {
     try {
         const games = await apiGet(`${games_url}/games`);
+
         return games;
     } catch (error) {
         return `Erro ao buscar jogos: ${error.message}`;
@@ -116,11 +117,7 @@ export async function postGames(newGame) {
     try {
         const response = await apiPost(`${games_url}/games`, newGame);
 
-        if (!response.ok) {
-            throw new Error(`Erro ao adicionar jogo`);
-        }
-
-        const data = await response.json();
+        const data = response;
         return `Novo jogo adicionado: ${newGame.name}`;
     } catch (error) {
         return `Erro ao adicionar jogo: ${error.message}`;

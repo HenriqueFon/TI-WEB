@@ -51,6 +51,21 @@
       ],
       "comments": [],
       "id": "8f06"
+    },
+    {
+      "name": "The Witcher 3",
+      "image": "https://upload.wikimedia.org/wikipedia/pt/0/06/TW3_Wild_Hunt.png",
+      "genre": "RPG",
+      "avarage_score": 0,
+      "graphic_cards": [
+        "GTX 660",
+        "GTX 1050 Ti",
+        "GTX 1650",
+        "RTX 3060",
+        "RX 6400"
+      ],
+      "comments": [],
+      "id": "8f07"
     }
   ]
 }
