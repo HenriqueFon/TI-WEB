@@ -97,9 +97,9 @@ export async function createCommentFromSpecificGame(gameName, comment) {
 export async function getGamesByGraphicCard(graphicCardName) {
     try {
         const jogos = await apiGet(`${games_url}/games`);
-        const jogosData = await jogos.json();
+        // const jogosData = await jogos.json();
 
-        const filteredGames = jogosData.filter(filtered =>
+        const filteredGames = jogos.filter(filtered =>
             filtered.graphic_cards &&
             filtered.graphic_cards.map(card => card.toUpperCase())
                 .includes(graphicCardName.toUpperCase())

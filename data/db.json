@@ -36,6 +36,21 @@
       ],
       "comments": [],
       "id": "8f05"
+    },
+    {
+      "name": "Skyrim",
+      "image": "https://upload.wikimedia.org/wikipedia/pt/thumb/a/aa/The_Elder_Scrolls_5_Skyrim_capa.png/270px-The_Elder_Scrolls_5_Skyrim_capa.png",
+      "genre": "RPG",
+      "avarage_score": 8,
+      "graphic_cards": [
+        "GTX 660",
+        "GTX 1050 Ti",
+        "GTX 1650",
+        "RTX 3060",
+        "RX 6400"
+      ],
+      "comments": [],
+      "id": "8f06"
     }
   ]
 }
