@@ -27,7 +27,7 @@ export function translatePage(language) {
     });
 }
 
-export function createPost(authorName, authorRole, avatarSrc, postTime, postContent) {
+export function renderPost(authorName, authorRole, avatarSrc, postTime, postContent) {
     // Criando um novo elemento <article>
     const post = document.createElement("article");
     post.classList.add("post");
@@ -54,7 +54,7 @@ export function createPost(authorName, authorRole, avatarSrc, postTime, postCont
     document.querySelector("main").appendChild(post);
 }
 
-export function createSidebarPerfil(coverImage, avatarImage, name, comment) {
+export function renderSidebarPerfil(coverImage, avatarImage, name, comment) {
 
     const perfil = document.createElement("aside");
     perfil.classList.add("sidebar");
