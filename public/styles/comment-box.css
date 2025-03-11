@@ -35,4 +35,11 @@
     border: 0;
     background: var(--green-500);
     font-weight: bold;
+    
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.commentBoxForm button:hover {
+    background: var(--green-500);
+    color: var(--white);
 }

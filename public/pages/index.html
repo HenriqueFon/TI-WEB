@@ -26,12 +26,22 @@
                 <li data-translate = "nav-home"><a href="#">Início</a></li>
                 <li data-translate = "nav-games"><a href="#">Jogos</a></li>
                 <li data-translate = "nav-ranking"><a href="#">Ranking</a></li>
+                <li data-translate = "nav-exit"><a href="#">Exit</a></li>
             </ul>
         </nav>
     </header>
     <div class="wrapper">
         <main>
             <article class = "comment-box">
+                <select name="pets" id="pet-select">
+                    <option value="">--Please choose an option--</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="hamster">Hamster</option>
+                    <option value="parrot">Parrot</option>
+                    <option value="spider">Spider</option>
+                    <option value="goldfish">Goldfish</option>
+                  </select>
                 <form class="commentBoxForm">
                     <textarea placeholder="Deixe um comentário" data-translate-placeholder = "comment-placeholder"></textarea>
                     <button type="submit" data-translate = "comment-button">Comentar</button>

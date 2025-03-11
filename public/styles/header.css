@@ -1,12 +1,21 @@
 .header {
     background:var(--gray-800);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     padding: 1.25rem 0;
 }
 
-.header h1 {
-    
+h1 {
+    display: flex;
+    justify-content: start;
+    padding-left: 1rem;
+}
+
+.nav {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
 }
 
 .header img {
