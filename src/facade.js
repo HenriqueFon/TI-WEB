@@ -1,8 +1,8 @@
 import { getAllComments } from "./endpoints";
 
 
-export function renderPost() {
-    const comments = getAllComments();
+export async function renderPost() {
+    const comments = await getAllComments();
 
     console.log(comments)
 }

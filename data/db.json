@@ -66,6 +66,28 @@
       ],
       "comments": [],
       "id": "8f07"
+    },
+    {
+      "name": "Terraria",
+      "image": "https://upload.wikimedia.org/wikipedia/pt/e/ee/Terraria_capa.png",
+      "genre": "Sandbox",
+      "avarage_score": 0,
+      "graphic_cards": [
+        "GTX 1650",
+        "RX 6400",
+        "Intel Arc A380",
+        "GTX 1050 Ti",
+        "RTX 3060"
+      ],
+      "comments": [
+        {
+          "id": 1,
+          "user": "Henrique",
+          "score": 10,
+          "comment": "Cave, lute, explore, construa! – Esse é o lema de Terraria, um jogo indie de ação e aventura lançado em 2011 pela Re-Logic. O título pode ser descrito como uma fusão entre Minecraft e Metroidvania, combinando construção e exploração em um mundo gerado proceduralmente. Mas Terraria vai além de ser apenas um Minecraft 2D, oferecendo mecânicas profundas de progressão, combate e criatividade que o tornam único."
+        }
+      ],
+      "id": "8f08"
     }
   ]
 }

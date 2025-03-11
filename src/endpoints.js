@@ -60,11 +60,25 @@ export async function getSpecificGame(name) {
     }
 }
 
+//Recupera o id de um jogo específico dentro do JSON SERVER
+export async function getSpecificGameId(name) {
+    try {
+        const games = await apiGet(`${games_url}/games`);
+
+        const specificGame = games.find(game => game.name.toLowerCase() === name.toLowerCase());
+        return specificGame.id;
+    } catch (error) {
+        return `Erro ao encontrar jogo: ${error.message}`;
+    }
+}
+
 //Recupera uma lista de todos comentários feitos dentro do JSON SERVER
 export async function getAllComments(){
     try {
         const game = await getGames();
-        const comments = game.comments;
+        const comments = game.flatMap(game => game.comments || []);;
+
+        console.log(comments)
 
         return comments;
     } catch (error) {

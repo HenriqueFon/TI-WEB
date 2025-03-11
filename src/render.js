@@ -1,4 +1,4 @@
-import { getGames, login } from './endpoints.js';
+import { getAllComments, getGames, login } from './endpoints.js';
 import { translatePage, createPost, renderSidebarPerfil } from './utils.js';
 import { createNewCommentModel } from './models.js';
 
@@ -36,7 +36,7 @@ createPost(comment)
 
 translatePage("en-us")
 
-console.log()
+getAllComments();
 
 
 // let userId;
