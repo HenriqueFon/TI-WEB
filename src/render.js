@@ -37,7 +37,7 @@ const comment = createNewCommentModel(
 
 createPost(comment)
 
-translatePage("en-us")
+translatePage("jp")
 
 renderPost();
 

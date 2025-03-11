@@ -20,13 +20,13 @@ export const translations = {
         "post-time": "Publicado 1 hora atrás"
     },
     "jp": {
-        "title": "Gamer Score",
-        "nav-home": "Home",
-        "nav-games": "Games",
-        "nav-ranking": "Ranking",
-        "profile-edit": "Edit your profile",
-        "comment-placeholder": "Leave a comment",
-        "comment-button": "Comment",
-        "post-time": "Published 1 hour ago"
+        "title": "ゲームスコア",
+        "nav-home": "ホーム",
+        "nav-games": "ゲーム",
+        "nav-ranking": "ランク",
+        "profile-edit": "プロフィール編集",
+        "comment-placeholder": "コメントをする",
+        "comment-button": "コメント",
+        "post-time": "時間前に公開されました"
     },
 }

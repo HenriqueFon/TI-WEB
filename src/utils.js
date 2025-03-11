@@ -45,9 +45,13 @@ export function createPost(comment) {
             <time dateTime="${new Date().toISOString()}" data-translate="post-time">${comment.date}</time>
         </header>
 
+        <dev class = "game-name"><h2>${comment.game_name}</h2></dev>
+
         <div class="content">
             <p>${comment.comment}</p>
         </div>
+
+        <dev class = "game-score"><h3>${comment.score}</h3></dev>
     `;
 
     // Adicionando o post ao <main>
