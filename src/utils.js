@@ -134,3 +134,14 @@ export function createSidebarPerfil(user, language) {
     
 }
 
+export function createSelectBox(name) {
+
+    const selection = document.getElementById("game-select");
+
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+
+    selection.appendChild(option);
+}
+

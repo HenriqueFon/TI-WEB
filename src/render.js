@@ -1,6 +1,6 @@
 import { translatePage } from './utils.js';
 import { createNewCommentModel } from './models.js';
-import { renderPost, renderSideBar } from './facade.js';
+import { renderPost, renderSideBar, renderGameSelectionBox } from './facade.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -22,6 +22,8 @@ const comment = createNewCommentModel(
 renderSideBar(username, language)
 
 renderPost(language);
+
+renderGameSelectionBox()
 
 translatePage(language)
 

@@ -28,6 +28,11 @@
     margin-top: 1rem;
 }
 
+.commentBoxForm textarea:focus{
+    outline: none;
+    outline-color: var(--green-500);
+}
+
 .commentBoxForm button[type=submit] {
     padding: 1rem 1.5rem;
     margin-top: 1rem;

@@ -48,6 +48,19 @@ export async function getGames() {
     }
 }
 
+//Recupera uma lista de nomes de jogos cadastrados dentro do JSON SERVER
+export async function getGamesNames() {
+    try {
+        const games = await apiGet(`${games_url}/games`);
+
+        const names = games.map(game => game.name || []);;
+
+        return names;
+    } catch (error) {
+        return `Erro ao buscar jogos: ${error.message}`;
+    }
+}
+
 //Recupera um jogo específico dentro do JSON SERVER
 export async function getSpecificGame(name) {
     try {
