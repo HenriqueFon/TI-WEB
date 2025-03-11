@@ -27,7 +27,10 @@ export function translatePage(language) {
     });
 }
 
-export function createPost(comment, image, role) {
+export function createPost(comment, image, role, language) {
+
+    const commentTime = translations[language]["post-time"];
+
     // Criando um novo elemento <article>
     const post = document.createElement("article");
     post.classList.add("post");
@@ -42,7 +45,7 @@ export function createPost(comment, image, role) {
                     <span>${role}</span>
                 </div>
             </div>
-            <time dateTime="${new Date().toISOString()}" data-translate="post-time">Publicado há ${comment.date}</time>
+            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${commentTime}</time>
         </header>
 
         <dev class = "game-name"><h2>${comment.game_name}</h2></dev>
@@ -58,7 +61,9 @@ export function createPost(comment, image, role) {
     document.querySelector("main").appendChild(post);
 }
 
-export function createSidebarPerfil(user) {
+export function createSidebarPerfil(user, language) {
+
+    const profileText = translations[language]["profile-edit"];
 
     const perfil = document.createElement("aside");
     perfil.classList.add("sidebar");
@@ -71,7 +76,7 @@ export function createSidebarPerfil(user) {
             <span>${user.role}</span>
         </div>
         <footer>
-            <a href="#" data-translate = "profile-edit">Editar seu perfil</a>
+            <a href="#" data-translate = "profile-edit">${profileText}</a>
         </footer>
     `;
 

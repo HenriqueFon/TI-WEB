@@ -6,14 +6,7 @@ import { renderPost, renderSideBar } from './facade.js';
 let username = "Henrique";
 let password = "Password123"
 
-const teste = () => {
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector(".header h1").textContent = "Dev Score";
-        const contentElement = document.querySelector('.post .content').textContent = "teste";
-        console.log("teste")
-    });
-}
-
+let language = "pt-br";
 
 const comment = createNewCommentModel(
     1,
@@ -29,29 +22,9 @@ const comment = createNewCommentModel(
     ]
 )
 
-renderSideBar("Henrique")
+renderSideBar(username, language)
 
-renderPost();
+renderPost(language);
 
-translatePage("jp")
+translatePage(language)
 
-
-// let userId;
-
-// getUserId(username)
-// .then(Id => {userId = Id})
-
-
-// createCommentFromSpecificGame("CS2", userComment).then(message => {console.log(message)})
-
-
-// generateUniqueId().then(Id => {userId = Id})
-
-// createNewUser(newUser)
-// .then(users => {console.log(users)})
-
-login(username, password)
-.then(users => {console.log(users)})
-
-// getCommentsFromSpecificGame("CS2")
-// .then(games => {console.log(games);})

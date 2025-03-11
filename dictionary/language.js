@@ -7,7 +7,7 @@ export const translations = {
         "profile-edit": "Edit your profile",
         "comment-placeholder": "Leave a comment",
         "comment-button": "Comment",
-        "post-time": "Published 1 hour ago"
+        "post-time": "hour ago"
     },
     "pt-br": {
         "title": "Gamer Score",
@@ -17,7 +17,7 @@ export const translations = {
         "profile-edit": "Edite seu perfil",
         "comment-placeholder": "Deixe um comentário",
         "comment-button": "Comentar",
-        "post-time": "Publicado 1 hora atrás"
+        "post-time": "horas atras"
     },
     "jp": {
         "title": "ゲームスコア",
