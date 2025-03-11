@@ -42,11 +42,11 @@ export function createPost(comment) {
                     <span>${comment.role}</span>
                 </div>
             </div>
-            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${comment.time}</time>
+            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${comment.date}</time>
         </header>
 
         <div class="content">
-            ${comment.text.map(text => `<p>${text}</p>`).join("")}
+            <p>${comment.comment}</p>
         </div>
     `;
 

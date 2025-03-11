@@ -71,7 +71,7 @@ export function createNewCommentModel(
         "image": image,
         "score": score,
         "time": time,
-        "text": comment
+        "comment": comment
     }
 
     return newComment

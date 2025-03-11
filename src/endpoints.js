@@ -78,7 +78,7 @@ export async function getAllComments(){
         const game = await getGames();
         const comments = game.flatMap(game => game.comments || []);;
 
-        console.log(comments)
+        comments.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         return comments;
     } catch (error) {

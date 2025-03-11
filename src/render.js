@@ -1,6 +1,7 @@
 import { getAllComments, getGames, login } from './endpoints.js';
 import { translatePage, createPost, renderSidebarPerfil } from './utils.js';
 import { createNewCommentModel } from './models.js';
+import { renderPost } from './facade.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -38,7 +39,7 @@ createPost(comment)
 
 translatePage("en-us")
 
-getAllComments();
+renderPost();
 
 
 // let userId;
