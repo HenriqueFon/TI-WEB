@@ -68,5 +68,9 @@
 
 #game-select:focus {
     color: var(--green-500);
+}
 
+#game-select option:hover {
+    background-color: #ff0000; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto */
 }

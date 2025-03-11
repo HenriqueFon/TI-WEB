@@ -21,3 +21,28 @@ h1 {
 .header img {
     height: 2rem;
 }
+
+#language-select {
+
+    display: flex;
+    justify-content: end;
+    margin-right: 2rem;
+    margin-left: 0.5rem;
+
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--gray-900); 
+    color: var(--gray-400);
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    border-radius: 4px;
+    padding-left: 0.5rem;
+
+    cursor: pointer;
+
+    transition: color 0.2s, background-color 0.2s;
+}
+
+#language-select:focus {
+    color: var(--green-500);
+}

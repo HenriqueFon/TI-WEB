@@ -1,5 +1,5 @@
 import { getAllComments, getGamesNames, getSpecificUserData } from "./endpoints.js";
-import { createPost, createSelectBox, createSidebarPerfil } from "./utils.js";
+import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions } from "./utils.js";
 
 //Renderiza todos os comentários já feitos
 export async function renderPost(language) {
@@ -23,6 +23,17 @@ export async function renderGameSelectionBox() {
     const gamesName = await getGamesNames();
 
     for (const names of gamesName) {
-        createSelectBox(names)
+        createGameSelectBox(names)
     }
+}
+
+//Renderiza as opções de seleção de jogos dentro da comment box
+export async function renderLanguageSelectionBox() {
+
+    const languages = translationsOptions;
+
+    for (const language of languages) {
+        createLanguageSelectBox(language);
+    }
+
 }

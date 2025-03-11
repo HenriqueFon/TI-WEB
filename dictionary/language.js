@@ -10,7 +10,8 @@ export const translations = {
         "comment-button": "Comment",
         "post-time": "hour ago",
         "game-score": "Score:",
-        "select-placeholder": "Select a game"
+        "select-placeholder": "Select a game",
+        "language-placeholder": "Language"
     },
     "pt-br": {
         "title": "Gamer Score",
@@ -23,7 +24,8 @@ export const translations = {
         "comment-button": "Comentar",
         "post-time": "horas atras",
         "game-score": "Nota:",
-        "select-placeholder": "Escolha um jogo"
+        "select-placeholder": "Escolha um jogo",
+        "language-placeholder": "Idioma"
     },
     "jp": {
         "title": "ゲームスコア",
@@ -36,6 +38,7 @@ export const translations = {
         "comment-button": "コメント",
         "post-time": "時間前に公開されました",
         "game-score": "スコア:",
-        "select-placeholder": "ゲームを選ぶ"
+        "select-placeholder": "ゲームを選ぶ",
+        "language-placeholder": "言語"
     },
 }

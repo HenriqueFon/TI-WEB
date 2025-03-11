@@ -139,12 +139,26 @@ export function createSidebarPerfil(user, language) {
     
 }
 
-export function createSelectBox(name) {
+export function createGameSelectBox(name) {
 
     const selection = document.getElementById("game-select");
 
     const option = document.createElement("option");
     option.classList.add("game-option");
+    option.value = name;
+    option.textContent = name;
+
+    selection.appendChild(option);
+}
+
+export const translationsOptions = ["English", "Português", "日本語"]
+
+export function createLanguageSelectBox(name) {
+
+    const selection = document.getElementById("language-select");
+
+    const option = document.createElement("option");
+    option.classList.add("language-option");
     option.value = name;
     option.textContent = name;
 
