@@ -53,6 +53,8 @@ export function createNewGameRegisterModel(
 
 export function createNewCommentModel(
     id,
+    game_id,
+    game_name,
     name,
     role,
     image,
@@ -62,11 +64,13 @@ export function createNewCommentModel(
 ) {
     const newComment = {
         "id": id,
+        "game_id": game_id,
+        "game_name": game_name,
         "user": name,
         "role": role,
         "image": image,
         "score": score,
-        "time": "",
+        "time": time,
         "text": comment
     }
 

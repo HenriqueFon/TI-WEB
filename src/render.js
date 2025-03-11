@@ -22,6 +22,8 @@ renderSidebarPerfil(
 
 const comment = createNewCommentModel(
     1,
+    "8f08",
+    "Terraria",
     "Henrique Fonseca",
     "Gamer",
     "../assets/my-photo.jpg",
