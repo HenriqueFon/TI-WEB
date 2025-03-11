@@ -60,6 +60,18 @@ export async function getSpecificGame(name) {
     }
 }
 
+//Recupera uma lista de todos comentários feitos dentro do JSON SERVER
+export async function getAllComments(){
+    try {
+        const game = await getGames();
+        const comments = game.comments;
+
+        return comments;
+    } catch (error) {
+        return `Erro ao buscar comentários: ${error.message}`;
+    }
+}
+
 //Recupera comentários de um jogo específico dentro do JSON SERVER
 export async function getCommentsFromSpecificGame(name) {
     try {

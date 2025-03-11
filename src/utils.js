@@ -27,7 +27,7 @@ export function translatePage(language) {
     });
 }
 
-export function renderPost(authorName, authorRole, avatarSrc, postTime, postContent) {
+export function createPost(comment) {
     // Criando um novo elemento <article>
     const post = document.createElement("article");
     post.classList.add("post");
@@ -36,17 +36,17 @@ export function renderPost(authorName, authorRole, avatarSrc, postTime, postCont
     post.innerHTML = `
         <header>
             <div class="author">
-                <img class="avatar" src="${avatarSrc}" alt="Avatar de ${authorName}">
+                <img class="avatar" src="${comment.image}" alt="Avatar de ${comment.user}">
                 <div class="authorInfo">
-                    <strong>${authorName}</strong>
-                    <span>${authorRole}</span>
+                    <strong>${comment.user}</strong>
+                    <span>${comment.role}</span>
                 </div>
             </div>
-            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${postTime}</time>
+            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${comment.time}</time>
         </header>
 
         <div class="content">
-            ${postContent.map(text => `<p>${text}</p>`).join("")}
+            ${comment.text.map(text => `<p>${text}</p>`).join("")}
         </div>
     `;
 
