@@ -27,7 +27,7 @@ export function timeSinceComment(commentDate, language) {
     const years = Math.floor(days / 365);
 
     switch (language) {
-        case "pt-br":
+        case "Português":
             if (years > 0) return `${years} ano${years > 1 ? 's' : ''} atrás`;
             if (months > 0) return `${months} mês${months > 1 ? 'es' : ''} atrás`;
             if (days > 0) return `${days} dia${days > 1 ? 's' : ''} atrás`;
@@ -35,7 +35,7 @@ export function timeSinceComment(commentDate, language) {
             if (minutes > 0) return `${minutes} minuto${minutes > 1 ? 's' : ''} atrás`;
             return `${seconds} segundo${seconds > 1 ? 's' : ''} atrás`;
 
-        case "en-us":
+        case "English":
             if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`;
             if (months > 0) return `${months} month${months > 1 ? 's' : ''} ago`;
             if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
@@ -43,7 +43,7 @@ export function timeSinceComment(commentDate, language) {
             if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
             return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
 
-        case "jp":
+        case "日本語":
             if (years > 0) return `${years}年前に公開されました`;
             if (months > 0) return `${months}ヶ月前に公開されました`;
             if (days > 0) return `${days}日前に公開されました`;
@@ -62,6 +62,7 @@ export function translatePage(language) {
 
     elements.forEach(element => {
         const key = element.getAttribute("data-translate");
+        
         if (translations[language][key]) {
             element.innerText = translations[language][key];
         }
@@ -69,8 +70,6 @@ export function translatePage(language) {
 
     // Atualiza placeholders
     const placeholders = document.querySelectorAll("[data-translate-placeholder]");
-
-    console.log(document.querySelectorAll("[data-translate-placeholder]"))
 
     placeholders.forEach(element => {
         const key = element.getAttribute("data-translate-placeholder");
@@ -117,6 +116,8 @@ export function createPost(comment, image, role, language) {
 }
 
 export function createSidebarPerfil(user, language) {
+
+    console.log(language)
 
     const profileText = translations[language]["profile-edit"];
 

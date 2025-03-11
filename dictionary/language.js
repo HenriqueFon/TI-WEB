@@ -1,5 +1,5 @@
 export const translations = {
-    "en-us": {
+    "English": {
         "title": "Gamer Score",
         "nav-home": "Home",
         "nav-games": "Games",
@@ -13,7 +13,7 @@ export const translations = {
         "select-placeholder": "Select a game",
         "language-placeholder": "Language"
     },
-    "pt-br": {
+    "Português": {
         "title": "Gamer Score",
         "nav-home": "Inicio",
         "nav-games": "Jogos",
@@ -27,7 +27,7 @@ export const translations = {
         "select-placeholder": "Escolha um jogo",
         "language-placeholder": "Idioma"
     },
-    "jp": {
+    "日本語": {
         "title": "ゲームスコア",
         "nav-home": "ホーム",
         "nav-games": "ゲーム",
