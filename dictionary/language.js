@@ -8,7 +8,9 @@ export const translations = {
         "profile-edit": "Edit your profile",
         "comment-placeholder": "Leave a comment",
         "comment-button": "Comment",
-        "post-time": "hour ago"
+        "post-time": "hour ago",
+        "game-score": "Score:",
+        "select-placeholder": "Select a game"
     },
     "pt-br": {
         "title": "Gamer Score",
@@ -19,7 +21,9 @@ export const translations = {
         "profile-edit": "Edite seu perfil",
         "comment-placeholder": "Deixe um comentário",
         "comment-button": "Comentar",
-        "post-time": "horas atras"
+        "post-time": "horas atras",
+        "game-score": "Nota:",
+        "select-placeholder": "Escolha um jogo"
     },
     "jp": {
         "title": "ゲームスコア",
@@ -30,6 +34,8 @@ export const translations = {
         "profile-edit": "プロフィール編集",
         "comment-placeholder": "コメントをする",
         "comment-button": "コメント",
-        "post-time": "時間前に公開されました"
+        "post-time": "時間前に公開されました",
+        "game-score": "スコア:",
+        "select-placeholder": "ゲームを選ぶ"
     },
 }

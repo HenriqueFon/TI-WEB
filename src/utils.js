@@ -69,6 +69,9 @@ export function translatePage(language) {
 
     // Atualiza placeholders
     const placeholders = document.querySelectorAll("[data-translate-placeholder]");
+
+    console.log(document.querySelectorAll("[data-translate-placeholder]"))
+
     placeholders.forEach(element => {
         const key = element.getAttribute("data-translate-placeholder");
         if (translations[language][key]) {
@@ -78,6 +81,8 @@ export function translatePage(language) {
 }
 
 export function createPost(comment, image, role, language) {
+
+    const score = translations[language]["game-score"];
 
     const commentTime = timeSinceComment(comment.date, language)
 
@@ -104,7 +109,7 @@ export function createPost(comment, image, role, language) {
             <p>${comment.comment}</p>
         </div>
 
-        <dev class = "game-score"><h3>Nota: ${comment.score}</h3></dev>
+        <dev class = "game-score"><h3>${score} ${comment.score}</h3></dev>
     `;
 
     // Adicionando o post ao <main>
@@ -139,6 +144,7 @@ export function createSelectBox(name) {
     const selection = document.getElementById("game-select");
 
     const option = document.createElement("option");
+    option.classList.add("game-option");
     option.value = name;
     option.textContent = name;
 
