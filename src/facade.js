@@ -1,15 +1,19 @@
-import { getAllComments } from "./endpoints.js";
-import { createPost } from "./utils.js";
+import { getAllComments, getSpecificUserData } from "./endpoints.js";
+import { createPost, createSidebarPerfil } from "./utils.js";
 
-
+//Renderiza todos os comentários já feitos
 export async function renderPost() {
     const comments = await getAllComments();
 
-    console.log(comments)
+    for (const comment of comments) {
+        const user = await getSpecificUserData(comment.user); 
+        createPost(comment, user.image, user.role);
+    }
+}
 
-    const post = comments.forEach(comment => {
-        createPost(comment)
-    });
+//Renderiza a sidebar de perfil do usuário
+export async function renderSideBar(username) {
+    const user = await getSpecificUserData(username);
 
-    return post;
+    createSidebarPerfil(user)
 }

@@ -200,7 +200,18 @@ export async function getUserId(username) {
     }
 }
 
+//Pega dados de um usuário específico
+export async function getSpecificUserData(username) {
+    try {
+        const userCredentials = await apiGet(`${users_url}/users`);
+        const findUser = userCredentials.find(user => user.username === username);
+        
+        return findUser;
 
+    } catch (error) {
+        return `Usuário não encontrado: ${error.message}`;
+    }
+}
 
 
 //Exemplo de objeto para cadastro de Jogos

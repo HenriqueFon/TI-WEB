@@ -27,7 +27,7 @@ export function translatePage(language) {
     });
 }
 
-export function createPost(comment) {
+export function createPost(comment, image, role) {
     // Criando um novo elemento <article>
     const post = document.createElement("article");
     post.classList.add("post");
@@ -36,13 +36,13 @@ export function createPost(comment) {
     post.innerHTML = `
         <header>
             <div class="author">
-                <img class="avatar" src="${comment.image}" alt="Avatar de ${comment.user}">
+                <img class="avatar" src="${image}" alt="Avatar de ${comment.user}">
                 <div class="authorInfo">
                     <strong>${comment.user}</strong>
-                    <span>${comment.role}</span>
+                    <span>${role}</span>
                 </div>
             </div>
-            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${comment.date}</time>
+            <time dateTime="${new Date().toISOString()}" data-translate="post-time">Publicado há ${comment.date}</time>
         </header>
 
         <dev class = "game-name"><h2>${comment.game_name}</h2></dev>
@@ -51,24 +51,24 @@ export function createPost(comment) {
             <p>${comment.comment}</p>
         </div>
 
-        <dev class = "game-score"><h3>${comment.score}</h3></dev>
+        <dev class = "game-score"><h3>Nota: ${comment.score}</h3></dev>
     `;
 
     // Adicionando o post ao <main>
     document.querySelector("main").appendChild(post);
 }
 
-export function renderSidebarPerfil(coverImage, avatarImage, name, comment) {
+export function createSidebarPerfil(user) {
 
     const perfil = document.createElement("aside");
     perfil.classList.add("sidebar");
 
     perfil.innerHTML = `
-        <img class="cover" src="${coverImage}" alt="background-photo">
+        <img class="cover" src="${user.cover_image}" alt="background-photo">
         <div class="profile">
-            <img class="avatar" src="${avatarImage}">
-            <strong>${name}</strong>
-            <span>${comment}</span>
+            <img class="avatar" src="${user.image}">
+            <strong>${user.username}</strong>
+            <span>${user.role}</span>
         </div>
         <footer>
             <a href="#" data-translate = "profile-edit">Editar seu perfil</a>

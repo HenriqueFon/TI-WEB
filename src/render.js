@@ -1,7 +1,7 @@
 import { getAllComments, getGames, login } from './endpoints.js';
-import { translatePage, createPost, renderSidebarPerfil } from './utils.js';
+import { translatePage, createPost, createSidebarPerfil } from './utils.js';
 import { createNewCommentModel } from './models.js';
-import { renderPost } from './facade.js';
+import { renderPost, renderSideBar } from './facade.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -14,12 +14,6 @@ const teste = () => {
     });
 }
 
-renderSidebarPerfil(
-    "../assets/cover-photo.png",
-    "../assets/my-photo.jpg",
-    "Henrique",
-    "Moderador"
-)
 
 const comment = createNewCommentModel(
     1,
@@ -35,11 +29,11 @@ const comment = createNewCommentModel(
     ]
 )
 
-createPost(comment)
-
-translatePage("jp")
+renderSideBar("Henrique")
 
 renderPost();
+
+translatePage("jp")
 
 
 // let userId;
