@@ -117,8 +117,6 @@ export function createPost(comment, image, role, language) {
 
 export function createSidebarPerfil(user, language) {
 
-    console.log(language)
-
     const profileText = translations[language]["profile-edit"];
 
     const perfil = document.createElement("aside");
@@ -164,5 +162,29 @@ export function createLanguageSelectBox(name) {
     option.textContent = name;
 
     selection.appendChild(option);
+}
+
+export function createCommentBox(language) {
+
+    const placeHolder = translations[language]["select-placeholder"];
+    const textHolder = translations[language]["comment-placeholder"];
+    const buttonHolder = translations[language]["comment-button"];
+    
+    console.log(textHolder)
+
+    const commentBox = document.createElement("article");
+    commentBox.classList.add("comment-box");
+
+    commentBox.innerHTML = `
+                <select name="game-options" id="game-select">
+                    <option id = "game-placeholder" value = "" data-translate = "select-placeholder">${placeHolder}</option>
+                  </select>
+                <form class="commentBoxForm">
+                    <textarea placeholder= ${textHolder} data-translate-placeholder = "comment-placeholder"></textarea>
+                    <button type="submit" data-translate = "comment-button">${buttonHolder}</button>
+                </form>
+    `;
+
+    document.querySelector("main").appendChild(commentBox);
 }
 

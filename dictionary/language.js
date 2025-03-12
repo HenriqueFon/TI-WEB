@@ -32,7 +32,7 @@ export const translations = {
         "nav-home": "ホーム",
         "nav-games": "ゲーム",
         "nav-ranking": "ランク",
-        "nav-exit": "出る",
+        "nav-exit": "ログアウト",
         "profile-edit": "プロフィール編集",
         "comment-placeholder": "コメントをする",
         "comment-button": "コメント",

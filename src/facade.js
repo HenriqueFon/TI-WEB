@@ -1,5 +1,5 @@
 import { getAllComments, getGamesNames, getSpecificUserData } from "./endpoints.js";
-import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions } from "./utils.js";
+import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions, createCommentBox } from "./utils.js";
 
 //Renderiza todos os comentários já feitos
 export async function renderPost(language) {
@@ -9,6 +9,11 @@ export async function renderPost(language) {
         const user = await getSpecificUserData(comment.user); 
         createPost(comment, user.image, user.role, language);
     }
+}
+
+//Renderiza a caixa de comentários 
+export async function renderCommentBox(language) {
+    createCommentBox(language);
 }
 
 //Renderiza a sidebar de perfil do usuário
