@@ -131,22 +131,12 @@ export async function createCommentFromSpecificGame(gameName, comment, user, sco
             now,
             comment
         )
-
-        // const updatedComments = [...(game.comments || []), formatedComment];
-
-        const teste = {
-            "id": 1,
-            "game_id": "8f08",
-            "game_name": "Terraria",
-            "user": "Henrique",
-            "score": 10,
-            "date": "2024-11-30T14:32:10.123Z",
-            "comment": "Cave, lute, explore, construa! – Esse é o lema de Terraria..."
-          }
-
         
+        // Adiciona o novo comentário ao array existente
+         const updatedComments = [...(game.comments || []), formatedComment];
 
-        const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: teste });
+         // Faz a requisição PATCH corretamente
+         const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: updatedComments });
 
         return `Comentário adicionado ao jogo ${game.name}`;
     } catch (error) {
