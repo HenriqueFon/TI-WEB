@@ -1,6 +1,6 @@
 import { translatePage } from './utils.js';
 import { createNewCommentModel } from './models.js';
-import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelectionBox, renderCommentBox } from './facade.js';
+import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelectionBox, renderCommentBox, makeComment } from './facade.js';
 
 let username = "Henrique";
 let password = "Password123"
@@ -29,6 +29,8 @@ renderGameSelectionBox()
 
 translatePage(language)
 
+// makeComment(username)
+
 document.getElementById("language-select").addEventListener("change", function(event) {
         language = event.target.value;
         translatePage(language)
@@ -36,6 +38,11 @@ document.getElementById("language-select").addEventListener("change", function(e
         document.querySelector("main").innerHTML = "";
         renderCommentBox(language)
         renderPost(language);
+});
+
+document.getElementById("commentButton").addEventListener("click", function(event) {
+        console.log("clicado")
+        makeComment(username)
 });
 
 

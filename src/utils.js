@@ -169,19 +169,26 @@ export function createCommentBox(language) {
     const placeHolder = translations[language]["select-placeholder"];
     const textHolder = translations[language]["comment-placeholder"];
     const buttonHolder = translations[language]["comment-button"];
+    const scoreHolder = translations[language]["select-score-placeholder"]
     
-    console.log(textHolder)
-
     const commentBox = document.createElement("article");
     commentBox.classList.add("comment-box");
 
     commentBox.innerHTML = `
                 <select name="game-options" id="game-select">
                     <option id = "game-placeholder" value = "" data-translate = "select-placeholder">${placeHolder}</option>
-                  </select>
+                </select>
+                <select name="game-score" id="score-select">
+                    <option id = "score-placeholder" value = "" data-translate = "select-score-placeholder">${scoreHolder}</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <form class="commentBoxForm">
-                    <textarea placeholder= ${textHolder} data-translate-placeholder = "comment-placeholder"></textarea>
-                    <button type="submit" data-translate = "comment-button">${buttonHolder}</button>
+                    <textarea id = "commentBox" placeholder= ${textHolder} data-translate-placeholder = "comment-placeholder"></textarea>
+                    <button type="submit" id = "commentButton" data-translate = "comment-button">${buttonHolder}</button>
                 </form>
     `;
 

@@ -41,9 +41,17 @@
                 <select name="game-options" id="game-select">
                     <option id = "game-placeholder" value = "" data-translate = "select-placeholder">Select a game</option>
                   </select>
+                <select name="game-score" id="score-select">
+                    <option id = "score-placeholder" value = "" data-translate = "select-score-placeholder">Score</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <form class="commentBoxForm">
-                    <textarea placeholder="Leave a comment" data-translate-placeholder = "comment-placeholder"></textarea>
-                    <button type="submit" data-translate = "comment-button">Comment</button>
+                    <textarea id = "commentBox" placeholder="Leave a comment" data-translate-placeholder = "comment-placeholder"></textarea>
+                    <button type="submit" id = "commentButton" data-translate = "comment-button">Comment</button>
                 </form>
             </article>
         </main>

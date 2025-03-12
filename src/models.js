@@ -57,7 +57,6 @@ export function createNewCommentModel(
     game_name,
     name,
     role,
-    image,
     score,
     time,
     comment
@@ -68,7 +67,6 @@ export function createNewCommentModel(
         "game_name": game_name,
         "user": name,
         "role": role,
-        "image": image,
         "score": score,
         "time": time,
         "comment": comment

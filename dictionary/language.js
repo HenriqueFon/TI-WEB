@@ -11,7 +11,8 @@ export const translations = {
         "post-time": "hour ago",
         "game-score": "Score:",
         "select-placeholder": "Select a game",
-        "language-placeholder": "Language"
+        "language-placeholder": "Language",
+        "select-score-placeholder": "Score"
     },
     "Português": {
         "title": "Gamer Score",
@@ -25,7 +26,8 @@ export const translations = {
         "post-time": "horas atras",
         "game-score": "Nota:",
         "select-placeholder": "Escolha um jogo",
-        "language-placeholder": "Idioma"
+        "language-placeholder": "Idioma",
+        "select-score-placeholder": "Nota"
     },
     "日本語": {
         "title": "ゲームスコア",
@@ -39,6 +41,7 @@ export const translations = {
         "post-time": "時間前に公開されました",
         "game-score": "スコア:",
         "select-placeholder": "ゲームを選ぶ",
-        "language-placeholder": "言語"
+        "language-placeholder": "言語",
+        "select-score-placeholder": "スコア"
     },
 }

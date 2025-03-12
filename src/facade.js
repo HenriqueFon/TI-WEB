@@ -1,4 +1,5 @@
-import { getAllComments, getGamesNames, getSpecificUserData } from "./endpoints.js";
+import { getAllComments, getGamesNames, getSpecificUserData, updateAvarageScoreOfGame } from "./endpoints.js";
+import { createNewCommentModel } from "./models.js";
 import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions, createCommentBox } from "./utils.js";
 
 //Renderiza todos os comentários já feitos
@@ -41,4 +42,18 @@ export async function renderLanguageSelectionBox() {
         createLanguageSelectBox(language);
     }
 
+}
+
+//Realiza a criação de um novo comentário
+export async function makeComment(username) {
+
+    const game = document.getElementById("game-select").value.trim();
+    const score = document.getElementById("score-select").value.trim();
+    const comment = document.getElementById("commentBox").value.trim();
+
+    const user = await getSpecificUserData(username)
+
+    const updateScore = await updateAvarageScoreOfGame(game, score);
+
+    await createCommentFromSpecificGame(game, comment, user, score);
 }

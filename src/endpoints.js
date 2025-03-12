@@ -1,4 +1,5 @@
 import { generateRandomNumber } from './utils.js';
+import { createNewCommentModel } from './models.js';
 import { apiGet, apiPatch, apiPost } from './api.js';
 
 const games_url = "http://localhost:3000";
@@ -110,7 +111,7 @@ export async function getCommentsFromSpecificGame(name) {
 }
 
 //Cria um novo comentário para um jogo
-export async function createCommentFromSpecificGame(gameName, comment) {
+export async function createCommentFromSpecificGame(gameName, comment, user, score) {
     try {
         const game = await getSpecificGame(gameName);
 
@@ -118,17 +119,60 @@ export async function createCommentFromSpecificGame(gameName, comment) {
             throw new Error(`Jogo ${gameName} não encontrado`);
         }
 
-        const updatedComments = [...(game.comments || []), comment];
+        const now = new Date();
 
-        const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: updatedComments });
+        const formatedComment = createNewCommentModel(
+            user.id,
+            game.id,
+            game.name,
+            user.username,
+            user.role,
+            score,
+            now,
+            comment
+        )
 
-        if (!response.ok) {
-            throw new Error(`Erro ao adicionar comentário`);
-        }
+        // const updatedComments = [...(game.comments || []), formatedComment];
+
+        const teste = {
+            "id": 1,
+            "game_id": "8f08",
+            "game_name": "Terraria",
+            "user": "Henrique",
+            "score": 10,
+            "date": "2024-11-30T14:32:10.123Z",
+            "comment": "Cave, lute, explore, construa! – Esse é o lema de Terraria..."
+          }
+
+        
+
+        const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: teste });
 
         return `Comentário adicionado ao jogo ${game.name}`;
     } catch (error) {
         return `Erro ao adicionar comentário: ${error.message}`;
+    }
+}
+
+//Atualiza o avarage score para um jogo
+export async function updateAvarageScoreOfGame(gameName, newScore) {
+    try {
+        // Obtém o jogo específico pelo nome
+        const game = await getSpecificGame(gameName);
+
+        if (!game) {
+            throw new Error(`Jogo ${gameName} não encontrado`);
+        }
+    
+        const totalScores = (game.comments || []).reduce((sum, comment) => sum + comment.score, 0) + newScore;
+        const newAverageScore = totalScores / ((game.comments?.length || 0) + 1);
+
+        const response = await apiPatch(`${games_url}/games/${game.id}`, { avarage_score: newAverageScore });
+
+        return `Média de score do jogo ${game.name} atualizada para ${newAverageScore.toFixed(2)}`;
+    } catch (error) {
+        console.error("Erro ao atualizar a média de score:", error);
+        return `Erro ao atualizar a média de score: ${error.message}`;
     }
 }
 
