@@ -131,7 +131,6 @@ export async function createCommentFromSpecificGame(gameName, comment, user, sco
             now,
             comment
         )
-        
         // Adiciona o novo comentário ao array existente
          const updatedComments = [...(game.comments || []), formatedComment];
 

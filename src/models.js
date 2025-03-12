@@ -68,7 +68,7 @@ export function createNewCommentModel(
         "user": name,
         "role": role,
         "score": score,
-        "time": time,
+        "date": time,
         "comment": comment
     }
 
