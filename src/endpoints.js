@@ -115,6 +115,8 @@ export async function createCommentFromSpecificGame(gameName, comment, user, sco
     try {
         const game = await getSpecificGame(gameName);
 
+        const uniqueIdForComment = await generateUniqueIdForComment();
+
         if (!game) {
             throw new Error(`Jogo ${gameName} não encontrado`);
         }
@@ -130,7 +132,8 @@ export async function createCommentFromSpecificGame(gameName, comment, user, sco
             user.role,
             score,
             now,
-            comment
+            comment,
+            uniqueIdForComment
         )
         // Adiciona o novo comentário ao array existente
          const updatedComments = [...(game.comments || []), formatedComment];
@@ -231,6 +234,24 @@ export async function generateUniqueId() {
     }
 }
 
+//Gera um número aleatório para ser o Id do comentário do usuário dentro do Banco de dados
+export async function generateUniqueIdForComment() {
+    try {
+        const games = await getAllComments();
+        let comments = games;
+
+        let uniqueId;
+
+        do {
+            uniqueId = generateRandomNumber();
+        } while (comments.some(comment => comment.comment_id == uniqueId));
+
+        return uniqueId;
+    } catch (error) {
+        return `Erro ao buscar comentários: ${error.message}`;
+    }
+}
+
 //Pega o Id do usuário
 export async function getUserId(username) {
     try {
@@ -259,24 +280,4 @@ export async function getSpecificUserData(username) {
         return `Usuário não encontrado: ${error.message}`;
     }
 }
-
-
-//Exemplo de objeto para cadastro de Jogos
-// {
-//     "name": "",
-//     "image": "",
-//     "genre": "",
-//     "avarage_score": 0,
-//     "graphic_cards": [],
-//     "comments": [],
-//     "id": ""
-//   }
-
-//Exemplo de objeto para criação de comentários
-// {
-//     id: 2,
-//     user: "Carlos",
-//     score: 8,
-//     comment: "Ótimo jogo, gráficos incríveis!"
-// };
 

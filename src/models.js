@@ -60,7 +60,8 @@ export function createNewCommentModel(
     role,
     score,
     time,
-    comment
+    comment,
+    comment_id
 ) {
     const newComment = {
         "id": id,
@@ -71,7 +72,8 @@ export function createNewCommentModel(
         "role": role,
         "score": score,
         "date": time,
-        "comment": comment
+        "comment": comment,
+        "comment_id": comment_id
     }
 
     return newComment
