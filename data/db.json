@@ -84,7 +84,7 @@
       "name": "Terraria",
       "image": "https://upload.wikimedia.org/wikipedia/pt/e/ee/Terraria_capa.png",
       "genre": "Sandbox",
-      "avarage_score": 7.5,
+      "avarage_score": 6.25,
       "graphic_cards": [
         "GTX 1650",
         "RX 6400",
@@ -101,19 +101,34 @@
           "score": 10,
           "date": "2024-11-30T14:32:10.123Z",
           "comment": "Cave, lute, explore, construa! – Esse é o lema de Terraria..."
-        },
-        {
-          "id": "1",
-          "game_id": "8f08",
-          "game_name": "Terraria",
-          "user": "Henrique",
-          "role": "Moderador",
-          "score": 5,
-          "date": "2025-03-12T22:26:46.966Z",
-          "comment": "Jogão"
         }
       ],
       "id": "8f08"
+    },
+    {
+      "name": "GTA V",
+      "image": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
+      "genre": "Action, Open-World",
+      "average_score": 9.5,
+      "graphic_cards": [
+        "GTX 660",
+        "GTX 1050 Ti",
+        "GTX 1650",
+        "RTX 3060",
+        "RX 6400"
+      ],
+      "comments": [
+        {
+          "id": 2,
+          "game_id": "8f08",
+          "game_name": "GTA V",
+          "user": "Dava Jonas",
+          "score": 10,
+          "date": "2025-02-14T14:32:10.123Z",
+          "comment": "EU JÁ JOGUEI TODOS OS JOGOS, TODOS.... e nenhum se eguala ao Grand Theft Auto da Rockstar"
+        }
+      ],
+      "id": "8f09"
     }
   ]
 }

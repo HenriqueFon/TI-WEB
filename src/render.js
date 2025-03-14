@@ -7,6 +7,10 @@ let password = "Password123"
 
 let language = "日本語";
 
+function addCommentEventListener() {
+    document.getElementById("commentButton").addEventListener("click", () => makeComment(username));
+}
+
 const comment = createNewCommentModel(
         1,
         "8f04",
@@ -29,7 +33,6 @@ renderGameSelectionBox()
 
 translatePage(language)
 
-// makeComment(username)
 
 document.getElementById("language-select").addEventListener("change", function(event) {
         language = event.target.value;
@@ -40,10 +43,14 @@ document.getElementById("language-select").addEventListener("change", function(e
         renderPost(language);
 });
 
-document.getElementById("commentButton").addEventListener("click", function(event) {
-        console.log("clicado")
-        makeComment(username)
+document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    makeComment(username);
 });
+
+
+
+
 
 
 

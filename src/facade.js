@@ -1,4 +1,4 @@
-import { getAllComments, getGamesNames, getSpecificUserData, updateAvarageScoreOfGame } from "./endpoints.js";
+import { getAllComments, getGamesNames, getSpecificUserData, updateAvarageScoreOfGame, createCommentFromSpecificGame } from "./endpoints.js";
 import { createNewCommentModel } from "./models.js";
 import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions, createCommentBox } from "./utils.js";
 
