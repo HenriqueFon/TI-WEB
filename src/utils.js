@@ -79,13 +79,24 @@ export function translatePage(language) {
     });
 }
 
-export function createPost(comment, image, role, language) {
+export function createPost(comment, user, language) {
+    const specs = user.spec;
 
     const score = translations[language]["game-score"];
 
     const platformIcon = verifyDeviceIcon(comment.platform);
 
-    const commentTime = timeSinceComment(comment.date, language)
+    const commentTime = timeSinceComment(comment.date, language);
+
+    const specsPopover = `
+        <strong>Processor:</strong> ${specs.processor}<br>
+        <strong>RAM:</strong> ${specs.ram}<br>
+        <strong>Graphics:</strong> ${specs.graphic_cards}<br>
+        <strong>Storage:</strong> ${specs.storage}<br>
+        <strong>OS:</strong> ${specs.operating_system}
+    `;
+
+    console.log(specsPopover)
 
     // Criando um novo elemento <article>
     const post = document.createElement("article");
@@ -95,26 +106,38 @@ export function createPost(comment, image, role, language) {
     post.innerHTML = `
         <header>
             <div class="author">
-                <img class="avatar" src="${image}" alt="Avatar de ${comment.user}">
+                <img 
+                    class="avatar"
+                    src="${user.image}" 
+                    alt="Avatar de ${comment.user}"
+                    data-bs-toggle="popover"
+                    data-bs-html="true"
+                    data-bs-trigger="hover focus"
+                    data-bs-placement="bottom"
+                    title="PC Specs"
+                    data-bs-content="${specsPopover}">
                 <div class="authorInfo">
                     <strong>${comment.user}</strong>
-                    <span>${role}</span>
+                    <span>${user.role}</span>
                 </div>
             </div>
             <time dateTime="${new Date().toISOString()}" data-translate="post-time">${commentTime}</time>
         </header>
 
-        <dev class = "game-name">${platformIcon}<h2>${comment.game_name}</h2></dev>
+        <dev class="game-name">${platformIcon}<h2>${comment.game_name}</h2></dev>
 
         <div class="content">
             <p>${comment.comment}</p>
         </div>
 
-        <dev class = "game-score"><h3>${score} ${comment.score}</h3></dev>
+        <dev class="game-score"><h3>${score} ${comment.score}</h3></dev>
     `;
 
     // Adicionando o post ao <main>
     document.querySelector("main").appendChild(post);
+
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 }
 
 export function createSidebarPerfil(user, language) {
@@ -187,6 +210,13 @@ export function createCommentBox(language) {
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
+                </select>
+                <select name="game-platform" id="platform-select">
+                    <option id = "platform-placeholder" value = "" data-translate = "select-platform-placeholder">Platform</option>
+                    <option value="pc">PC</option>
+                    <option value="switch">Switch</option>
+                    <option value="xbox">Xbox</option>
+                    <option value="playstation">playstation</option>
                 </select>
                 <form class="commentBoxForm">
                     <textarea id = "commentBox" placeholder= ${textHolder} data-translate-placeholder = "comment-placeholder"></textarea>

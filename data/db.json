@@ -30,7 +30,7 @@
       "name": "Final Fantasy 13",
       "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.square-enix-games.com%2Fpt_BR%2Fgames%2Ffinal-fantasy-xiii&psig=AOvVaw3qSgei2UOpNUUopKu5nTZk&ust=1741377646490000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCODOi7Wf9osDFQAAAAAdAAAAABAS",
       "genre": "RPG",
-      "avarage_score": 0,
+      "avarage_score": 4,
       "graphic_cards": [
         "GTX 660",
         "GTX 1050 Ti",
@@ -38,7 +38,19 @@
         "RTX 3060",
         "RX 6400"
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "1",
+          "game_id": "8f05",
+          "game_name": "Final Fantasy 13",
+          "platform": "pc",
+          "user": "Henrique",
+          "role": "Moderador",
+          "score": "4",
+          "date": "2025-03-14T20:16:56.109Z",
+          "comment": "Jogo muito legal"
+        }
+      ],
       "id": "8f05"
     },
     {

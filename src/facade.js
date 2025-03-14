@@ -1,5 +1,4 @@
 import { getAllComments, getGamesNames, getSpecificUserData, updateAvarageScoreOfGame, createCommentFromSpecificGame } from "./endpoints.js";
-import { createNewCommentModel } from "./models.js";
 import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions, createCommentBox } from "./utils.js";
 
 //Renderiza todos os comentários já feitos
@@ -8,7 +7,7 @@ export async function renderPost(language) {
 
     for (const comment of comments) {
         const user = await getSpecificUserData(comment.user); 
-        createPost(comment, user.image, user.role, language);
+        createPost(comment, user, language);
     }
 }
 
@@ -50,10 +49,11 @@ export async function makeComment(username) {
      const game = document.getElementById("game-select").value.trim();
      const score = document.getElementById("score-select").value.trim();
      const comment = document.getElementById("commentBox").value.trim();
+     const platform = document.getElementById("platform-select").value.trim();
 
     const user = await getSpecificUserData(username)
 
     const updateScore = await updateAvarageScoreOfGame(game, score);
 
-    await createCommentFromSpecificGame(game, comment, user, score);
+    await createCommentFromSpecificGame(game, comment, user, score, platform);
 }

@@ -98,6 +98,12 @@ margin-top: 1rem;
 
 }
 
+.popover {
+    background-color: #333 !important; /* Cor escura */
+    color: #fff !important; /* Texto branco */
+    border: 1px solid #555 !important;
+}
+
 .commentForm textarea {
     width: 100%;
     background: var(--gray-900);
