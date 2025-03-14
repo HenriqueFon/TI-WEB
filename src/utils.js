@@ -6,12 +6,63 @@ export function generateRandomNumber() {
     return randomNumber;
 }
 
+//Faz o calculo de tempo
+export function timeSinceComment(commentDate, language) {
+
+    if (!commentDate || isNaN(new Date(commentDate))) {
+        console.error("Data inválida recebida:", commentDate);
+        return "Data inválida";
+    }
+
+    const now = new Date(); // Data atual
+    const commentTime = new Date(commentDate); // Data do comentário
+    const diffInMs = now - commentTime; // Diferença em milissegundos
+
+    // Converter milissegundos para unidades maiores
+    const seconds = Math.floor(diffInMs / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+
+    switch (language) {
+        case "Português":
+            if (years > 0) return `${years} ano${years > 1 ? 's' : ''} atrás`;
+            if (months > 0) return `${months} mês${months > 1 ? 'es' : ''} atrás`;
+            if (days > 0) return `${days} dia${days > 1 ? 's' : ''} atrás`;
+            if (hours > 0) return `${hours} hora${hours > 1 ? 's' : ''} atrás`;
+            if (minutes > 0) return `${minutes} minuto${minutes > 1 ? 's' : ''} atrás`;
+            return `${seconds} segundo${seconds > 1 ? 's' : ''} atrás`;
+
+        case "English":
+            if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`;
+            if (months > 0) return `${months} month${months > 1 ? 's' : ''} ago`;
+            if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+            if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+
+        case "日本語":
+            if (years > 0) return `${years}年前に公開されました`;
+            if (months > 0) return `${months}ヶ月前に公開されました`;
+            if (days > 0) return `${days}日前に公開されました`;
+            if (hours > 0) return `${hours}時間前に公開されました`;
+            if (minutes > 0) return `${minutes}分前に公開されました`;
+            return `${seconds}秒前に公開されました`;
+
+        default:
+            return "Unsupported language"; // Caso a linguagem não seja reconhecida
+    }
+}
+
 //Traduz a página
 export function translatePage(language) {
     const elements = document.querySelectorAll("[data-translate]");
 
     elements.forEach(element => {
         const key = element.getAttribute("data-translate");
+        
         if (translations[language][key]) {
             element.innerText = translations[language][key];
         }
@@ -19,6 +70,7 @@ export function translatePage(language) {
 
     // Atualiza placeholders
     const placeholders = document.querySelectorAll("[data-translate-placeholder]");
+
     placeholders.forEach(element => {
         const key = element.getAttribute("data-translate-placeholder");
         if (translations[language][key]) {
@@ -27,7 +79,12 @@ export function translatePage(language) {
     });
 }
 
-export function createPost(authorName, authorRole, avatarSrc, postTime, postContent) {
+export function createPost(comment, image, role, language) {
+
+    const score = translations[language]["game-score"];
+
+    const commentTime = timeSinceComment(comment.date, language)
+
     // Criando um novo elemento <article>
     const post = document.createElement("article");
     post.classList.add("post");
@@ -36,42 +93,105 @@ export function createPost(authorName, authorRole, avatarSrc, postTime, postCont
     post.innerHTML = `
         <header>
             <div class="author">
-                <img class="avatar" src="${avatarSrc}" alt="Avatar de ${authorName}">
+                <img class="avatar" src="${image}" alt="Avatar de ${comment.user}">
                 <div class="authorInfo">
-                    <strong>${authorName}</strong>
-                    <span>${authorRole}</span>
+                    <strong>${comment.user}</strong>
+                    <span>${role}</span>
                 </div>
             </div>
-            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${postTime}</time>
+            <time dateTime="${new Date().toISOString()}" data-translate="post-time">${commentTime}</time>
         </header>
 
+        <dev class = "game-name"><h2>${comment.game_name}</h2></dev>
+
         <div class="content">
-            ${postContent.map(text => `<p>${text}</p>`).join("")}
+            <p>${comment.comment}</p>
         </div>
+
+        <dev class = "game-score"><h3>${score} ${comment.score}</h3></dev>
     `;
 
     // Adicionando o post ao <main>
     document.querySelector("main").appendChild(post);
 }
 
-export function createSidebarPerfil(coverImage, avatarImage, name, comment) {
+export function createSidebarPerfil(user, language) {
+
+    const profileText = translations[language]["profile-edit"];
 
     const perfil = document.createElement("aside");
     perfil.classList.add("sidebar");
 
     perfil.innerHTML = `
-        <img class="cover" src="${coverImage}" alt="background-photo">
+        <img class="cover" src="${user.cover_image}" alt="background-photo">
         <div class="profile">
-            <img class="avatar" src="${avatarImage}">
-            <strong>${name}</strong>
-            <span>${comment}</span>
+            <img class="avatar" src="${user.image}">
+            <strong>${user.username}</strong>
+            <span>${user.role}</span>
         </div>
         <footer>
-            <a href="#" data-translate = "profile-edit">Editar seu perfil</a>
+            <a href="#" data-translate = "profile-edit">${profileText}</a>
         </footer>
     `;
 
     document.querySelector(".wrapper").prepend(perfil);
     
+}
+
+export function createGameSelectBox(name) {
+
+    const selection = document.getElementById("game-select");
+
+    const option = document.createElement("option");
+    option.classList.add("game-option");
+    option.value = name;
+    option.textContent = name;
+
+    selection.appendChild(option);
+}
+
+export const translationsOptions = ["English", "Português", "日本語"]
+
+export function createLanguageSelectBox(name) {
+
+    const selection = document.getElementById("language-select");
+
+    const option = document.createElement("option");
+    option.classList.add("language-option");
+    option.value = name;
+    option.textContent = name;
+
+    selection.appendChild(option);
+}
+
+export function createCommentBox(language) {
+
+    const placeHolder = translations[language]["select-placeholder"];
+    const textHolder = translations[language]["comment-placeholder"];
+    const buttonHolder = translations[language]["comment-button"];
+    const scoreHolder = translations[language]["select-score-placeholder"]
+    
+    const commentBox = document.createElement("article");
+    commentBox.classList.add("comment-box");
+
+    commentBox.innerHTML = `
+                <select name="game-options" id="game-select">
+                    <option id = "game-placeholder" value = "" data-translate = "select-placeholder">${placeHolder}</option>
+                </select>
+                <select name="game-score" id="score-select">
+                    <option id = "score-placeholder" value = "" data-translate = "select-score-placeholder">${scoreHolder}</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <form class="commentBoxForm">
+                    <textarea id = "commentBox" placeholder= ${textHolder} data-translate-placeholder = "comment-placeholder"></textarea>
+                    <button type="submit" id = "commentButton" data-translate = "comment-button">${buttonHolder}</button>
+                </form>
+    `;
+
+    document.querySelector("main").appendChild(commentBox);
 }
 
