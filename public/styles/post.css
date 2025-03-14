@@ -9,8 +9,8 @@
 }
 
 .post h2 {
-    margin-top: 1rem;
     color:var(--gray-300);
+    margin-left: 0.5rem;
 }
 
 .post h3 {
@@ -71,6 +71,12 @@
 .authorInfo strong {
     color: var(--gray-100);
     line-height: 1.6;
+}
+
+.game-name {
+margin-top: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .authorInfo span {

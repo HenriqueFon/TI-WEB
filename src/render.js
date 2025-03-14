@@ -5,7 +5,7 @@ import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelect
 let username = "Henrique";
 let password = "Password123"
 
-let language = "日本語";
+let language = "English";
 
 function addCommentEventListener() {
     document.getElementById("commentButton").addEventListener("click", () => makeComment(username));

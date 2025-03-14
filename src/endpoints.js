@@ -111,7 +111,7 @@ export async function getCommentsFromSpecificGame(name) {
 }
 
 //Cria um novo comentário para um jogo
-export async function createCommentFromSpecificGame(gameName, comment, user, score) {
+export async function createCommentFromSpecificGame(gameName, comment, user, score, platform) {
     try {
         const game = await getSpecificGame(gameName);
 
@@ -125,6 +125,7 @@ export async function createCommentFromSpecificGame(gameName, comment, user, sco
             user.id,
             game.id,
             game.name,
+            platform,
             user.username,
             user.role,
             score,
