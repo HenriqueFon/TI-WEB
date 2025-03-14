@@ -1,4 +1,5 @@
 import { generateRandomNumber } from './utils.js';
+import { createNewCommentModel } from './models.js';
 import { apiGet, apiPatch, apiPost } from './api.js';
 
 const games_url = "http://localhost:3000";
@@ -48,6 +49,19 @@ export async function getGames() {
     }
 }
 
+//Recupera uma lista de nomes de jogos cadastrados dentro do JSON SERVER
+export async function getGamesNames() {
+    try {
+        const games = await apiGet(`${games_url}/games`);
+
+        const names = games.map(game => game.name || []);;
+
+        return names;
+    } catch (error) {
+        return `Erro ao buscar jogos: ${error.message}`;
+    }
+}
+
 //Recupera um jogo específico dentro do JSON SERVER
 export async function getSpecificGame(name) {
     try {
@@ -57,6 +71,32 @@ export async function getSpecificGame(name) {
         return specificGame;
     } catch (error) {
         return `Erro ao encontrar jogo: ${error.message}`;
+    }
+}
+
+//Recupera o id de um jogo específico dentro do JSON SERVER
+export async function getSpecificGameId(name) {
+    try {
+        const games = await apiGet(`${games_url}/games`);
+
+        const specificGame = games.find(game => game.name.toLowerCase() === name.toLowerCase());
+        return specificGame.id;
+    } catch (error) {
+        return `Erro ao encontrar jogo: ${error.message}`;
+    }
+}
+
+//Recupera uma lista de todos comentários feitos dentro do JSON SERVER
+export async function getAllComments(){
+    try {
+        const game = await getGames();
+        const comments = game.flatMap(game => game.comments || []);;
+
+        comments.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        return comments;
+    } catch (error) {
+        return `Erro ao buscar comentários: ${error.message}`;
     }
 }
 
@@ -71,7 +111,7 @@ export async function getCommentsFromSpecificGame(name) {
 }
 
 //Cria um novo comentário para um jogo
-export async function createCommentFromSpecificGame(gameName, comment) {
+export async function createCommentFromSpecificGame(gameName, comment, user, score) {
     try {
         const game = await getSpecificGame(gameName);
 
@@ -79,17 +119,49 @@ export async function createCommentFromSpecificGame(gameName, comment) {
             throw new Error(`Jogo ${gameName} não encontrado`);
         }
 
-        const updatedComments = [...(game.comments || []), comment];
+        const now = new Date();
 
-        const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: updatedComments });
+        const formatedComment = createNewCommentModel(
+            user.id,
+            game.id,
+            game.name,
+            user.username,
+            user.role,
+            score,
+            now,
+            comment
+        )
+        // Adiciona o novo comentário ao array existente
+         const updatedComments = [...(game.comments || []), formatedComment];
 
-        if (!response.ok) {
-            throw new Error(`Erro ao adicionar comentário`);
-        }
+         // Faz a requisição PATCH corretamente
+         const response = await apiPatch(`${games_url}/games/${game.id}`, { comments: updatedComments });
 
         return `Comentário adicionado ao jogo ${game.name}`;
     } catch (error) {
         return `Erro ao adicionar comentário: ${error.message}`;
+    }
+}
+
+//Atualiza o avarage score para um jogo
+export async function updateAvarageScoreOfGame(gameName, newScore) {
+    try {
+        // Obtém o jogo específico pelo nome
+        const game = await getSpecificGame(gameName);
+
+        if (!game) {
+            throw new Error(`Jogo ${gameName} não encontrado`);
+        }
+    
+        const totalScores = (game.comments || []).reduce((sum, comment) => sum + comment.score, 0) + newScore;
+        const newAverageScore = totalScores / ((game.comments?.length || 0) + 1);
+
+        const response = await apiPatch(`${games_url}/games/${game.id}`, { avarage_score: newAverageScore });
+
+        return `Média de score do jogo ${game.name} atualizada para ${newAverageScore.toFixed(2)}`;
+    } catch (error) {
+        console.error("Erro ao atualizar a média de score:", error);
+        return `Erro ao atualizar a média de score: ${error.message}`;
     }
 }
 
@@ -174,7 +246,18 @@ export async function getUserId(username) {
     }
 }
 
+//Pega dados de um usuário específico
+export async function getSpecificUserData(username) {
+    try {
+        const userCredentials = await apiGet(`${users_url}/users`);
+        const findUser = userCredentials.find(user => user.username === username);
+        
+        return findUser;
 
+    } catch (error) {
+        return `Usuário não encontrado: ${error.message}`;
+    }
+}
 
 
 //Exemplo de objeto para cadastro de Jogos

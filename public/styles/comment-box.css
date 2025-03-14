@@ -28,6 +28,11 @@
     margin-top: 1rem;
 }
 
+.commentBoxForm textarea:focus{
+    outline: none;
+    outline-color: var(--green-500);
+}
+
 .commentBoxForm button[type=submit] {
     padding: 1rem 1.5rem;
     margin-top: 1rem;
@@ -35,4 +40,54 @@
     border: 0;
     background: var(--green-500);
     font-weight: bold;
+    cursor: pointer;
+    
+    transition: color 0.2s, background-color 0.2s;
 }
+
+.commentBoxForm button:hover {
+    background: var(--green-500);
+    color: var(--white);
+}
+
+#game-select {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--gray-900); 
+    color: var(--gray-400);
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    border-radius: 4px;
+    padding-left: 0.5rem;
+
+    cursor: pointer;
+
+    transition: color 0.2s, background-color 0.2s;
+}
+
+#game-select:focus {
+    color: var(--green-500);
+}
+
+#score-select {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--gray-900); 
+    color: var(--gray-400);
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    border-radius: 4px;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+
+    cursor: pointer;
+    
+    transition: color 0.2s, background-color 0.2s;
+}
+
+#score-select:focus {
+    color: var(--green-500);
+}
+

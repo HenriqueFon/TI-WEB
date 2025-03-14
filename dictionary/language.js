@@ -1,32 +1,47 @@
 export const translations = {
-    "en-us": {
+    "English": {
         "title": "Gamer Score",
         "nav-home": "Home",
         "nav-games": "Games",
         "nav-ranking": "Ranking",
+        "nav-exit": "Exit",
         "profile-edit": "Edit your profile",
         "comment-placeholder": "Leave a comment",
         "comment-button": "Comment",
-        "post-time": "Published 1 hour ago"
+        "post-time": "hour ago",
+        "game-score": "Score:",
+        "select-placeholder": "Select a game",
+        "language-placeholder": "Language",
+        "select-score-placeholder": "Score"
     },
-    "pt-br": {
+    "Português": {
         "title": "Gamer Score",
         "nav-home": "Inicio",
         "nav-games": "Jogos",
+        "nav-exit": "Sair",
         "nav-ranking": "Classificação",
         "profile-edit": "Edite seu perfil",
         "comment-placeholder": "Deixe um comentário",
         "comment-button": "Comentar",
-        "post-time": "Publicado 1 hora atrás"
+        "post-time": "horas atras",
+        "game-score": "Nota:",
+        "select-placeholder": "Escolha um jogo",
+        "language-placeholder": "Idioma",
+        "select-score-placeholder": "Nota"
     },
-    "jp": {
-        "title": "Gamer Score",
-        "nav-home": "Home",
-        "nav-games": "Games",
-        "nav-ranking": "Ranking",
-        "profile-edit": "Edit your profile",
-        "comment-placeholder": "Leave a comment",
-        "comment-button": "Comment",
-        "post-time": "Published 1 hour ago"
+    "日本語": {
+        "title": "ゲームスコア",
+        "nav-home": "ホーム",
+        "nav-games": "ゲーム",
+        "nav-ranking": "ランク",
+        "nav-exit": "ログアウト",
+        "profile-edit": "プロフィール編集",
+        "comment-placeholder": "コメントをする",
+        "comment-button": "コメント",
+        "post-time": "時間前に公開されました",
+        "game-score": "スコア:",
+        "select-placeholder": "ゲームを選ぶ",
+        "language-placeholder": "言語",
+        "select-score-placeholder": "スコア"
     },
 }
