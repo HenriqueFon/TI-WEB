@@ -12,7 +12,14 @@ export const translations = {
         "game-score": "Score:",
         "select-placeholder": "Select a game",
         "language-placeholder": "Language",
-        "select-score-placeholder": "Score"
+        "select-score-placeholder": "Score",
+        "select-platform-placeholder": "Platform",
+        "popover-title": "Specs",
+        "popover-processor": "Processor",
+        "popover-ram": "RAM",
+        "popover-graphics": "Graphics",
+        "popover-storage": "Storage",
+        "popover-os": "OS"
     },
     "Português": {
         "title": "Gamer Score",
@@ -27,7 +34,14 @@ export const translations = {
         "game-score": "Nota:",
         "select-placeholder": "Escolha um jogo",
         "language-placeholder": "Idioma",
-        "select-score-placeholder": "Nota"
+        "select-score-placeholder": "Nota",
+        "select-platform-placeholder": "Plataforma",
+        "popover-title": "Especificações do PC",
+        "popover-processor": "Processador",
+        "popover-ram": "RAM",
+        "popover-graphics": "Gráficos",
+        "popover-storage": "Armazenamento",
+        "popover-os": "SO"
     },
     "日本語": {
         "title": "ゲームスコア",
@@ -42,6 +56,13 @@ export const translations = {
         "game-score": "スコア:",
         "select-placeholder": "ゲームを選ぶ",
         "language-placeholder": "言語",
-        "select-score-placeholder": "スコア"
+        "select-score-placeholder": "スコア",
+        "select-platform-placeholder": "プラットフォーム",
+        "popover-title": "PCの仕様",
+        "popover-processor": "プロセッサ",
+        "popover-ram": "RAM",
+        "popover-graphics": "グラフィックス",
+        "popover-storage": "ストレージ",
+        "popover-os": "OS"
     },
 }

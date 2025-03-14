@@ -82,21 +82,25 @@ export function translatePage(language) {
 export function createPost(comment, user, language) {
     const specs = user.spec;
 
-    const score = translations[language]["game-score"];
-
     const platformIcon = verifyDeviceIcon(comment.platform);
 
     const commentTime = timeSinceComment(comment.date, language);
 
-    const specsPopover = `
-        <strong>Processor:</strong> ${specs.processor}<br>
-        <strong>RAM:</strong> ${specs.ram}<br>
-        <strong>Graphics:</strong> ${specs.graphic_cards}<br>
-        <strong>Storage:</strong> ${specs.storage}<br>
-        <strong>OS:</strong> ${specs.operating_system}
-    `;
+    const score = translations[language]["game-score"];
+    const title = translations[language]["popover-title"];
+    const processor = translations[language]["popover-processor"];
+    const ram = translations[language]["popover-ram"];
+    const graphics = translations[language]["popover-graphics"];
+    const storage = translations[language]["popover-storage"];
+    const os = translations[language]["popover-os"];
 
-    console.log(specsPopover)
+    const specsPopover = `
+        <strong>${processor}:</strong> ${specs.processor}<br>
+        <strong>${ram}:</strong> ${specs.ram}<br>
+        <strong>${graphics}:</strong> ${specs.graphic_cards}<br>
+        <strong>${storage}:</strong> ${specs.storage}<br>
+        <strong>${os}:</strong> ${specs.operating_system}
+    `;
 
     // Criando um novo elemento <article>
     const post = document.createElement("article");
@@ -114,7 +118,7 @@ export function createPost(comment, user, language) {
                     data-bs-html="true"
                     data-bs-trigger="hover focus"
                     data-bs-placement="bottom"
-                    title="PC Specs"
+                    title=${title}
                     data-bs-content="${specsPopover}">
                 <div class="authorInfo">
                     <strong>${comment.user}</strong>
@@ -194,7 +198,8 @@ export function createCommentBox(language) {
     const placeHolder = translations[language]["select-placeholder"];
     const textHolder = translations[language]["comment-placeholder"];
     const buttonHolder = translations[language]["comment-button"];
-    const scoreHolder = translations[language]["select-score-placeholder"]
+    const scoreHolder = translations[language]["select-score-placeholder"];
+    const platformHolder = translations[language]["select-platform-placeholder"];
     
     const commentBox = document.createElement("article");
     commentBox.classList.add("comment-box");
@@ -212,7 +217,7 @@ export function createCommentBox(language) {
                     <option value="5">5</option>
                 </select>
                 <select name="game-platform" id="platform-select">
-                    <option id = "platform-placeholder" value = "" data-translate = "select-platform-placeholder">Platform</option>
+                    <option id = "platform-placeholder" value = "" data-translate = "select-platform-placeholder">${platformHolder}</option>
                     <option value="pc">PC</option>
                     <option value="switch">Switch</option>
                     <option value="xbox">Xbox</option>
