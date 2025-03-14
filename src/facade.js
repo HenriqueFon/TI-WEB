@@ -47,13 +47,9 @@ export async function renderLanguageSelectionBox() {
 //Realiza a criação de um novo comentário
 export async function makeComment(username) {
 
-    // const game = document.getElementById("game-select").value.trim();
-    // const score = document.getElementById("score-select").value.trim();
-    // const comment = document.getElementById("commentBox").value.trim();
-
-    const game = "Terraria";
-    const score = 5;
-    const comment = "Jogão";
+     const game = document.getElementById("game-select").value.trim();
+     const score = document.getElementById("score-select").value.trim();
+     const comment = document.getElementById("commentBox").value.trim();
 
     const user = await getSpecificUserData(username)
 
