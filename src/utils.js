@@ -79,8 +79,10 @@ export function translatePage(language) {
     });
 }
 
-export function createPost(comment, user, language) {
+export function createPost(comment, user, language, sessionUser) {
     const specs = user.spec;
+
+    let adminExclusion;
 
     const platformIcon = verifyDeviceIcon(comment.platform);
 
@@ -93,6 +95,7 @@ export function createPost(comment, user, language) {
     const graphics = translations[language]["popover-graphics"];
     const storage = translations[language]["popover-storage"];
     const os = translations[language]["popover-os"];
+    const deleteButton = translations[language]["delete-button"];
 
     const specsPopover = `
         <strong>${processor}:</strong> ${specs.processor}<br>
@@ -101,6 +104,12 @@ export function createPost(comment, user, language) {
         <strong>${storage}:</strong> ${specs.storage}<br>
         <strong>${os}:</strong> ${specs.operating_system}
     `;
+
+    if(sessionUser.role === "Admin") {
+        adminExclusion = `<button id="delete-buton" value = ${comment.comment_id}>${deleteButton}</button>`
+    } else {
+        adminExclusion = ``;
+    }
 
     // Criando um novo elemento <article>
     const post = document.createElement("article");
@@ -135,6 +144,7 @@ export function createPost(comment, user, language) {
         </div>
 
         <dev class="game-score"><h3>${score} ${comment.score}</h3></dev>
+        ${adminExclusion}
     `;
 
     // Adicionando o post ao <main>
@@ -148,6 +158,14 @@ export function createSidebarPerfil(user, language) {
 
     const profileText = translations[language]["profile-edit"];
 
+    let role;
+
+    if(user.role == "Admin") {
+        role = translations[language]["role-admin"];
+    } else {
+        role = translations[language]["role-user"];
+    }
+
     const perfil = document.createElement("aside");
     perfil.classList.add("sidebar");
 
@@ -156,7 +174,7 @@ export function createSidebarPerfil(user, language) {
         <div class="profile">
             <img class="avatar" src="${user.image}">
             <strong>${user.username}</strong>
-            <span>${user.role}</span>
+            <span>${role}</span>
         </div>
         <footer>
             <a href="#" data-translate = "profile-edit">${profileText}</a>

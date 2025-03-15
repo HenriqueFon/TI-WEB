@@ -25,7 +25,7 @@ const comment = createNewCommentModel(
 
 renderSideBar(username, language)
 
-renderPost(language);
+renderPost(language, username);
 
 renderLanguageSelectionBox()
 
@@ -40,7 +40,7 @@ document.getElementById("language-select").addEventListener("change", function(e
 
         document.querySelector("main").innerHTML = "";
         renderCommentBox(language)
-        renderPost(language);
+        renderPost(language, username);
 });
 
 document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {

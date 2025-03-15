@@ -1,6 +1,8 @@
 export const translations = {
     "English": {
         "title": "Gamer Score",
+        "role-admin": "Admin",
+        "role-user": "User",
         "nav-home": "Home",
         "nav-games": "Games",
         "nav-ranking": "Ranking",
@@ -8,6 +10,7 @@ export const translations = {
         "profile-edit": "Edit your profile",
         "comment-placeholder": "Leave a comment",
         "comment-button": "Comment",
+        "delete-button" : "Delete",
         "post-time": "hour ago",
         "game-score": "Score:",
         "select-placeholder": "Select a game",
@@ -23,6 +26,8 @@ export const translations = {
     },
     "Português": {
         "title": "Gamer Score",
+        "role-admin": "Moderador",
+        "role-user": "Usuário",
         "nav-home": "Inicio",
         "nav-games": "Jogos",
         "nav-exit": "Sair",
@@ -30,6 +35,7 @@ export const translations = {
         "profile-edit": "Edite seu perfil",
         "comment-placeholder": "Deixe um comentário",
         "comment-button": "Comentar",
+        "delete-button" : "Deletar",
         "post-time": "horas atras",
         "game-score": "Nota:",
         "select-placeholder": "Escolha um jogo",
@@ -45,6 +51,8 @@ export const translations = {
     },
     "日本語": {
         "title": "ゲームスコア",
+        "role-admin": "モデレーター ",
+        "role-user": "ユーザ",
         "nav-home": "ホーム",
         "nav-games": "ゲーム",
         "nav-ranking": "ランク",
@@ -52,6 +60,7 @@ export const translations = {
         "profile-edit": "プロフィール編集",
         "comment-placeholder": "コメントをする",
         "comment-button": "コメント",
+        "delete-button" : "消す",
         "post-time": "時間前に公開されました",
         "game-score": "スコア:",
         "select-placeholder": "ゲームを選ぶ",

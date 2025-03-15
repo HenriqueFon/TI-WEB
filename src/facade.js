@@ -2,12 +2,14 @@ import { getAllComments, getGamesNames, getSpecificUserData, updateAvarageScoreO
 import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions, createCommentBox } from "./utils.js";
 
 //Renderiza todos os comentários já feitos
-export async function renderPost(language) {
+export async function renderPost(language, username) {
     const comments = await getAllComments();
+
+    const sessionUser = await getSpecificUserData(username); 
 
     for (const comment of comments) {
         const user = await getSpecificUserData(comment.user); 
-        createPost(comment, user, language);
+        createPost(comment, user, language, sessionUser);
     }
 }
 
