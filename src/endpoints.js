@@ -281,5 +281,10 @@ export async function getSpecificUserData(username) {
     }
 }
 
+//Exclui um comentário específico de um usuário 
+export async function deleteSpecificComment() {
+
+}
+
 
 

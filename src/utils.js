@@ -106,7 +106,7 @@ export function createPost(comment, user, language, sessionUser) {
     `;
 
     if(sessionUser.role === "Admin") {
-        adminExclusion = `<button id="delete-buton" value = ${comment.comment_id}>${deleteButton}</button>`
+        adminExclusion = `<div class = "delete-buton-div"><button id="delete-buton" value = ${comment.comment_id}>${deleteButton}</button></div>`
     } else {
         adminExclusion = ``;
     }
@@ -248,6 +248,7 @@ export function createCommentBox(language) {
     `;
 
     document.querySelector("main").appendChild(commentBox);
+    
 }
 
 export function verifyDeviceIcon(device) {

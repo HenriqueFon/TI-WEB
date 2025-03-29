@@ -59,7 +59,7 @@
       "name": "Skyrim",
       "image": "https://upload.wikimedia.org/wikipedia/pt/thumb/a/aa/The_Elder_Scrolls_5_Skyrim_capa.png/270px-The_Elder_Scrolls_5_Skyrim_capa.png",
       "genre": "RPG",
-      "avarage_score": 5,
+      "avarage_score": 27.5,
       "graphic_cards": [
         "GTX 660",
         "GTX 1050 Ti",
@@ -67,14 +67,39 @@
         "RTX 3060",
         "RX 6400"
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "2",
+          "game_id": "8f06",
+          "game_name": "Skyrim",
+          "platform": "switch",
+          "user": "Dava Jonas",
+          "role": "Mago",
+          "score": "5",
+          "date": "2025-03-16T11:37:36.417Z",
+          "comment": "Eu já joguei todos os jogos todos, vagabundo é foda",
+          "comment_id": 12886
+        },
+        {
+          "id": "2",
+          "game_id": "8f06",
+          "game_name": "Skyrim",
+          "platform": "switch",
+          "user": "Dava Jonas",
+          "role": "Mago",
+          "score": "5",
+          "date": "2025-03-16T11:41:18.960Z",
+          "comment": "Teste teste, jogo muito bom",
+          "comment_id": 11693
+        }
+      ],
       "id": "8f06"
     },
     {
       "name": "The Witcher 3",
       "image": "https://upload.wikimedia.org/wikipedia/pt/0/06/TW3_Wild_Hunt.png",
       "genre": "RPG",
-      "avarage_score": 47.5,
+      "avarage_score": 45.5,
       "graphic_cards": [
         "GTX 660",
         "GTX 1050 Ti",
@@ -93,6 +118,18 @@
           "date": "2024-08-30T14:32:10.123Z",
           "comment": "O jogo que me fez gostar de RPGs. The Witcher entrega diversas ambientações, impossível não parar pra aproveitar a vista a cada 100 metros, vilas, montanhas, árvores, biomas, um prato cheio. Graficamente envelheceu bem, com o upgrade você se questiona se esse jogo tem mesmo 10 anos.",
           "comment_id": 3
+        },
+        {
+          "id": "1",
+          "game_id": "8f07",
+          "game_name": "The Witcher 3",
+          "platform": "xbox",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "1",
+          "date": "2025-03-16T11:41:44.920Z",
+          "comment": "TESTE TESTE",
+          "comment_id": 82282
         }
       ],
       "id": "8f07"
@@ -147,10 +184,22 @@
           "date": "2025-02-14T14:32:10.123Z",
           "comment": "EU JÁ JOGUEI TODOS OS JOGOS, TODOS.... e nenhum se eguala ao Grand Theft Auto da Rockstar",
           "comment_id": 5
+        },
+        {
+          "id": "1",
+          "game_id": "8f09",
+          "game_name": "GTA V",
+          "platform": "pc",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "5",
+          "date": "2025-03-16T11:38:25.606Z",
+          "comment": "TESTE",
+          "comment_id": 36105
         }
       ],
       "id": "8f09",
-      "avarage_score": 51
+      "avarage_score": 52.5
     }
   ]
 }

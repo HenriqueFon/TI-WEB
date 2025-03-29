@@ -16,6 +16,7 @@ export async function renderPost(language, username) {
 //Renderiza a caixa de comentários 
 export async function renderCommentBox(language) {
     createCommentBox(language);
+    
 }
 
 //Renderiza a sidebar de perfil do usuário

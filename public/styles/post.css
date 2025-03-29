@@ -74,7 +74,7 @@
 }
 
 .game-name {
-margin-top: 1rem;
+    margin-top: 1rem;
     display: flex;
     align-items: center;
 }
@@ -106,8 +106,28 @@ margin-top: 1rem;
     border: 1px solid #555 !important;
 }
 
-.delete-buton {
-    background-color: red;
+.delete-buton-div {
+    display: flex;
+    justify-content: end;
+}
+
+#delete-buton {
+    margin-top: 1rem;
+    display: flex;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    border: 0;
+    background: rgb(211, 97, 97);
+    font-weight: bold;
+    cursor: pointer;
+    
+    transition: color 0.2s, background-color 0.2s;
+}
+
+#delete-buton:hover {
+    background: rgb(109, 21, 21);
+    color: var(--white);
 }
 
 .commentForm textarea {
