@@ -46,3 +46,20 @@ export async function apiPatch(url, body) {
         throw new Error(error.message);
     }
 }
+
+export async function apiDelete(url) {
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`Erro ao deletar dados de ${url}`);
+        }
+        return await response.json();
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}

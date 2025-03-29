@@ -9,13 +9,18 @@
 h1 {
     display: flex;
     justify-content: start;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
 }
 
 .nav {
     flex-grow: 1; 
     display: flex;
     justify-content: center; 
+}
+
+.header svg {
+    margin-left: 10px;
+    color:var(--gray-300);
 }
 
 .header img {

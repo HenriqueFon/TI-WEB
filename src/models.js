@@ -55,21 +55,25 @@ export function createNewCommentModel(
     id,
     game_id,
     game_name,
+    platform,
     name,
     role,
     score,
     time,
-    comment
+    comment,
+    comment_id
 ) {
     const newComment = {
         "id": id,
         "game_id": game_id,
         "game_name": game_name,
+        "platform" : platform,
         "user": name,
         "role": role,
         "score": score,
         "date": time,
-        "comment": comment
+        "comment": comment,
+        "comment_id": comment_id
     }
 
     return newComment

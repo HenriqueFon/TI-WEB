@@ -5,27 +5,11 @@ import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelect
 let username = "Henrique";
 let password = "Password123"
 
-let language = "日本語";
-
-function addCommentEventListener() {
-    document.getElementById("commentButton").addEventListener("click", () => makeComment(username));
-}
-
-const comment = createNewCommentModel(
-        1,
-        "8f04",
-        "CS2",
-        "Henrique",
-        "Moderador",
-        "",
-        7,
-        "2023-07-15T08:45:22.456Z",
-        "Melhor FPS do mercado"
-)    
+let language = "English";
 
 renderSideBar(username, language)
 
-renderPost(language);
+renderPost(language, username);
 
 renderLanguageSelectionBox()
 
@@ -33,15 +17,28 @@ renderGameSelectionBox()
 
 translatePage(language)
 
-
 document.getElementById("language-select").addEventListener("change", function(event) {
         language = event.target.value;
         translatePage(language)
 
         document.querySelector("main").innerHTML = "";
         renderCommentBox(language)
-        renderPost(language);
+        renderGameSelectionBox()
+        renderPost(language, username);
+
+        document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            makeComment(username);
+        });
 });
+
+let buttonDiv = document.getElementsByClassName("delete-buton-div");
+
+console.log(buttonDiv)
+
+// document.querySelector("#delete-buton").addEventListener("click", (event) => {
+
+// });
 
 document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
