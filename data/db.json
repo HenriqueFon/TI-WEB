@@ -4,7 +4,7 @@
       "name": "Counter Strike 2",
       "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.ign.com%2Fcounter-strike-2&psig=AOvVaw1tyZ_RlzIKNMBEsGUxiapx&ust=1741378248105000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPju69Ch9osDFQAAAAAdAAAAABAJ",
       "genre": "FPS",
-      "avarage_score": 0,
+      "avarage_score": 35.5,
       "graphic_cards": [
         "GTX 1650",
         "RX 6400",
@@ -23,6 +23,18 @@
           "date": "2023-07-15T08:45:22.456Z",
           "comment": "Melhor FPS do mercado",
           "comment_id": 1
+        },
+        {
+          "id": "1",
+          "game_id": "8f04",
+          "game_name": "Counter Strike 2",
+          "platform": "switch",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "1",
+          "date": "2025-04-16T00:57:50.788Z",
+          "comment": "seial",
+          "comment_id": 6986
         }
       ],
       "id": "8f04"

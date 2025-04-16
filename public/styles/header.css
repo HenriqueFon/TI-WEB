@@ -52,3 +52,72 @@ h1 {
     color: var(--green-500);
 }
 
+/* Botão modo escuro/claro */
+
+body{
+    transition: 1s;
+}
+
+header{
+    transition: 1s;
+}
+
+.trilho{
+    width: 40px;
+    height: 20px;
+    background-color: #4d4d44;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.trilho .indicador{
+    width: 19px;
+    height: 19px;
+    background-color:var(--gray-800);
+    border-radius: 50%;
+    transform: scale(.9);
+    position: absolute;
+    left: 0px;
+    transition: 1s;
+}
+
+.trilho.dark{
+    background-color: #c3c3c3;
+}
+
+.trilho.dark .indicador{
+    left: 20px;
+    background-color: white;
+}
+
+
+body.dark{
+    background-color: #bdbdbd;
+}
+
+body.dark header{
+    background-color: #e4e4e4;
+}
+
+body.dark header svg{
+    color:  #000000;
+}
+
+body.dark header h1{
+    color:  #000000;
+}
+
+body.dark header ul li{
+    color:  #000000;
+}
+
+body.dark #language-select {
+    color: #000000;
+    background-color: #c5c5c5;
+}
+
+body.dark #language-select:focus {
+    color: #000000;
+    background-color: #e4e4e4;
+}

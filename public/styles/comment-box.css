@@ -116,3 +116,46 @@
     color: var(--green-500);
 }
 
+/*Botão modo escuro/claro*/
+
+.dark .comment-box {
+    background: rgb(226, 225, 225);
+}
+
+.dark .commentBoxForm textarea {
+    background: #bdbdbd;
+    color: black;
+}
+
+.dark #game-select {
+    background-color: #c5c5c5; 
+    color: black;
+}
+
+.dark #game-select:focus {
+    color: black;
+}
+
+.dark #score-select {
+
+    background-color: #c5c5c5; 
+    color: black;
+    
+}
+
+.dark #score-select:focus {
+    background-color: #c5c5c5;
+    color: black;
+}
+
+.dark #platform-select {
+    background-color: #c5c5c5; 
+    color: black;
+    
+}
+
+.dark #platform-select:focus {
+    color:black;
+    background-color: #c5c5c5;
+}
+
