@@ -151,3 +151,30 @@
     background: var(--green-500);
     font-weight: bold;
 }
+
+/* Botão modo escuro/claro */
+
+.dark .post {
+    background: rgb(226, 225, 225);
+}
+
+.dark .post h2 {
+    color:black;
+}
+
+.dark .content {
+    color: black;
+}
+
+.dark .post > header time {
+    font-size: 0.875rem;
+    color: rgb(34, 33, 33);
+}
+
+.dark .authorInfo strong {
+    color: black;
+}
+
+.dark .authorInfo span {
+    color: black;
+}

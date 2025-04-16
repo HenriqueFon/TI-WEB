@@ -45,7 +45,18 @@ document.querySelector(".commentBoxForm").addEventListener("submit", function(ev
     makeComment(username);
 });
 
+//Botão modo escuro/claro 
 
+let trilho = document.getElementById('trilho')
+let body = document.querySelector('body')
+
+trilho.addEventListener('click', ()=>{
+    trilho.classList.toggle('dark')
+    body.classList.toggle('dark')
+    console.log('abc')
+})
+
+console.log(body)
 
 
 

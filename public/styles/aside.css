@@ -66,3 +66,21 @@
     background: var(--green-500);
     color: var(--white);
 }
+/* Botão modo escuro/claro */
+
+.dark .sidebar {
+    background: rgb(226, 225, 225);
+    
+}
+
+.dark .profile strong {
+    color: black;
+}
+
+.dark .profile span {
+    color: black;
+}
+
+.dark .sidebar footer a {
+    color:black;
+}
