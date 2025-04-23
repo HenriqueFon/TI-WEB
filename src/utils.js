@@ -197,7 +197,7 @@ export function createGameSelectBox(name) {
     selection.appendChild(option);
 }
 
-export const translationsOptions = ["English", "Português", "日本語"]
+export const translationsOptions = ["English", "Português", "日本語", "Deutsch"]
 
 export function createLanguageSelectBox(name) {
 

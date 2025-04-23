@@ -74,4 +74,30 @@ export const translations = {
         "popover-storage": "ストレージ",
         "popover-os": "OS"
     },
+    "Deutsch" :{
+        "title": "Spielerwertung",
+        "role-admin": "Moderator",
+        "role-user": "Benutzer",
+        "nav-home": "Startseite",
+        "nav-games": "Spiele",
+        "nav-exit": "Beenden",
+        "nav-ranking": "Rangliste",
+        "profile-edit": "Profil bearbeiten",
+        "comment-placeholder": "Hinterlasse einen Kommentar",
+        "comment-button": "Kommentar",
+        "delete-button" : "Löschen",
+        "post-time": "vor Stunden",
+        "game-score": "Beachten:",
+        "select-placeholder": "Wähle ein Spiel",
+        "language-placeholder": "Sprache",
+        "select-score-placeholder": "Notiz",
+        "select-platform-placeholder": "Plattform",
+        "popover-title": "PC-Spezifikationen",
+        "popover-processor": "Prozessor",
+        "popover-ram": "Arbeitsspeicher",
+        "popover-graphics": "Grafiken",
+        "popover-storage": "Speicher",
+        "popover-os": "Betriebssystem"
+}
+
 }
