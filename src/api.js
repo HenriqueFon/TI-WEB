@@ -62,4 +62,5 @@ export async function apiDelete(url) {
     } catch (error) {
         throw new Error(error.message);
     }
+    console.log("Deletado com sucesso")
 }

@@ -1,4 +1,5 @@
 import { translations } from '../dictionary/language.js';
+import { deleteSpecificComment } from './endpoints.js';
 
 //Gera um número aleatório para o Id
 export function generateRandomNumber() {
@@ -106,7 +107,7 @@ export function createPost(comment, user, language, sessionUser) {
     `;
 
     if(sessionUser.role === "Admin") {
-        adminExclusion = `<div class = "delete-buton-div"><button id="delete-buton" value = ${comment.comment_id}>${deleteButton}</button></div>`
+        adminExclusion = `<div class = "delete-buton-div"><button id="delete-buton" value = ${comment.comment_id} onclick = "deleteSpecificComment(${comment.comment_id})">${deleteButton}</button></div>`
     } else {
         adminExclusion = ``;
     }

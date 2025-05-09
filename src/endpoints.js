@@ -1,6 +1,6 @@
 import { generateRandomNumber } from './utils.js';
 import { createNewCommentModel } from './models.js';
-import { apiGet, apiPatch, apiPost } from './api.js';
+import { apiDelete, apiGet, apiPatch, apiPost } from './api.js';
 
 const games_url = "http://localhost:3000";
 const users_url = "http://localhost:3001";
@@ -282,7 +282,23 @@ export async function getSpecificUserData(username) {
 }
 
 //Exclui um comentário específico de um usuário 
-export async function deleteSpecificComment() {
+export async function deleteSpecificComment(id) {
+    let comentarios = await getAllComments();
+    try {
+        filteredComments = comentarios.filter(comment => comment.comment_id !== id);
+        const respons = await apiDelete(`${games_url}/comments/${id}`);
+        if (respons.ok) {
+            return `Comentário ${id} deletado com sucesso!`;
+        } else {
+            throw new Error(`Erro ao deletar comentário: ${respons.statusText}`);
+        }
+        
+
+    } 
+    catch (error) {
+        return `Erro ao deletar comentário: ${error.message}`;
+    }
+
 
 }
 
