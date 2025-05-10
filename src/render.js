@@ -30,22 +30,21 @@ document.getElementById("language-select").addEventListener("change", function(e
             event.preventDefault(); 
             makeComment(username);
         });
+
 });
+
+
+function addDeleteListeners() {
+    document.querySelectorAll(".delete-buton").forEach(button => {
+        button.addEventListener("click", event => {
+            const commentId = parseInt(event.target.getAttribute("data-id"));
+            console.log("Botão clicado:", commentId); // Teste
+            deleteSpecificComment(commentId);
+        });
+    });
+}
 
 let buttonDiv = document.getElementsByClassName("delete-buton-div");
-
-console.log(buttonDiv)
-
-// document.querySelector("#delete-buton").addEventListener("click", (event) => {
-
-// });
-
-document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-    makeComment(username);
-});
-
-//Botão modo escuro/claro 
 
 let trilho = document.getElementById('trilho')
 let body = document.querySelector('body')
@@ -55,8 +54,6 @@ trilho.addEventListener('click', ()=>{
     body.classList.toggle('dark')
     console.log('abc')
 })
-
-console.log(body)
 
 
 

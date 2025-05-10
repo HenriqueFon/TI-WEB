@@ -283,19 +283,27 @@ export async function getSpecificUserData(username) {
 
 //Exclui um comentário específico de um usuário 
 export async function deleteSpecificComment(id) {
-    let comentarios = await getAllComments();
     try {
-        filteredComments = comentarios.filter(comment => comment.comment_id !== id);
-        const respons = await apiDelete(`${games_url}/comments/${id}`);
-        if (respons.ok) {
-            return `Comentário ${id} deletado com sucesso!`;
-        } else {
-            throw new Error(`Erro ao deletar comentário: ${respons.statusText}`);
-        }
         
+        const games = await apiGet("http://localhost:3000/games");
 
+        const game = games.find(g => g.comments?.some(c => parseInt(c.comment_id) === parseInt(id)));
+
+        if (!game) {
+            console.warn(`Comentário ${commentId} não encontrado em nenhum jogo.`);
+            return;
+        }
+
+        // 3. Remove o comentário com o ID correspondente
+        const updatedComments = game.comments.filter(c => parseInt(c.comment_id) !== parseInt(id));
+        const updatedGame = { ...game, comments: updatedComments };
+
+        await apiPatch(`http://localhost:3000/games/${game.id}`, updatedGame);
+
+        console.log(`Comentário ${commentId} removido com sucesso do jogo ${game.name}.`);
     } 
     catch (error) {
+        console.log(error)
         return `Erro ao deletar comentário: ${error.message}`;
     }
 

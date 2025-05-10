@@ -111,21 +111,19 @@
     justify-content: end;
 }
 
-#delete-buton {
+.delete-buton {
     margin-top: 1rem;
     display: flex;
     padding: 1rem 1.5rem;
-    margin-top: 1rem;
     border-radius: 8px;
     border: 0;
     background: rgb(211, 97, 97);
     font-weight: bold;
     cursor: pointer;
-    
     transition: color 0.2s, background-color 0.2s;
 }
 
-#delete-buton:hover {
+.delete-buton:hover {
     background: rgb(109, 21, 21);
     color: var(--white);
 }
