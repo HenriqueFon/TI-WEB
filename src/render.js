@@ -15,6 +15,8 @@ renderLanguageSelectionBox()
 
 renderGameSelectionBox()
 
+createNewComment();
+
 translatePage(language)
 
 document.getElementById("language-select").addEventListener("change", function(event) {
@@ -26,13 +28,15 @@ document.getElementById("language-select").addEventListener("change", function(e
         renderGameSelectionBox()
         renderPost(language, username);
 
-        document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
+        createNewComment();
+});
+
+function createNewComment() {
+    document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
             event.preventDefault(); 
             makeComment(username);
         });
-
-});
-
+}
 
 function addDeleteListeners() {
     document.querySelectorAll(".delete-buton").forEach(button => {
@@ -43,8 +47,6 @@ function addDeleteListeners() {
         });
     });
 }
-
-let buttonDiv = document.getElementsByClassName("delete-buton-div");
 
 let trilho = document.getElementById('trilho')
 let body = document.querySelector('body')
