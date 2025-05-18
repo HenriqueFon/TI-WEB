@@ -17,9 +17,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../src/render.js" type= "module" defer></script>
+    <script src="/TI-WEB/src/Geral.js"></script>
+   
     
 </head>
 <body>
+
+
+   <p><samp id="LoginMenssage"></samp></p>
+
+
 
     <header class="header">
         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
@@ -32,7 +39,7 @@
                 <li data-translate = "nav-home"><a href="#">Home</a></li>
                 <li data-translate = "nav-games"><a href="#">Games</a></li>
                 <li data-translate = "nav-ranking"><a href="#">Ranking</a></li>
-                <li data-translate = "nav-exit"><a href="#">Exit</a></li>
+                <li id = data-translate = "nav-exit"> <a href="/TI-WEB/public/pages/Login.html">Exit</a></li>
             </ul>
         </nav>
 
@@ -74,6 +81,20 @@
 
         </main>
     </div>
+
+   <script>
+        window.onload=()=>{
+            if(checkLoggedUser()){
+            document.getElementById('LoginMenssage').innerText=`Login: ${usuario.nome}`
+            }
+
+            const btnExit = document.getElementById('nav-exit')
+            btnExit.addEventListener(click,()=>{
+                logouUser()
+            })
+       }
+   </script>
+ 
 
 </body>
 </html>
