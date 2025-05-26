@@ -2,15 +2,17 @@ import { getAllComments, getGamesNames, getSpecificUserData, updateAvarageScoreO
 import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSelectBox, translationsOptions, createCommentBox } from "./utils.js";
 
 //Renderiza todos os comentários já feitos
+
 export async function renderPost(language, username) {
     const comments = await getAllComments();
-
     const sessionUser = await getSpecificUserData(username); 
 
-    for (const comment of comments) {
-        const user = await getSpecificUserData(comment.user); 
-        createPost(comment, user, language, sessionUser);
-    }
+    allLoadedComments = comments; // armazenar todos os comentários
+    currentLanguage = language;
+    currentUsername = username;
+
+    displayFilteredPosts(comments, language, sessionUser); // função separada para renderizar
+    setupFilters(); // ativa os filtros após carregar
 }
 
 //Renderiza a caixa de comentários 
@@ -59,4 +61,44 @@ export async function makeComment(username) {
     const updateScore = await updateAvarageScoreOfGame(game, score);
 
     await createCommentFromSpecificGame(game, comment, user, score, platform);
+}
+let allLoadedComments = []; // Para armazenar todos os comentários após carregar
+let currentLanguage;
+let currentUsername;
+
+function displayFilteredPosts(comments, language, sessionUser) {
+    const main = document.querySelector("main");
+    main.querySelectorAll(".post").forEach(post => post.remove()); // remove todos os posts atuais
+
+    comments.forEach(async (comment) => {
+        const user = await getSpecificUserData(comment.user);
+        createPost(comment, user, language, sessionUser);
+    });
+}
+
+function setupFilters() {
+    const gameSelect = document.getElementById("game-select");
+    const platformSelect = document.getElementById("platform-select");
+    const scoreSelect = document.getElementById("score-select");
+
+    const filterFunction = async () => {
+        const game = gameSelect.value;
+        const platform = platformSelect.value;
+        const score = scoreSelect.value;
+
+        const filtered = allLoadedComments.filter(comment => {
+            return (
+                (game === "" || comment.game_name === game) &&
+                (platform === "" || comment.platform === platform) &&
+                (score === "" || comment.score.toString() === score)
+            );
+        });
+
+        const sessionUser = await getSpecificUserData(currentUsername);
+        displayFilteredPosts(filtered, currentLanguage, sessionUser);
+    };
+
+    gameSelect.addEventListener("change", filterFunction);
+    platformSelect.addEventListener("change", filterFunction);
+    scoreSelect.addEventListener("change", filterFunction);
 }
