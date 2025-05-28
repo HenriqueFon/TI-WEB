@@ -200,6 +200,32 @@
       ],
       "id": "8f09",
       "avarage_score": 52.5
+    },
+    {
+      "id": "ac82",
+      "name": "Stardew Valley",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.steampowered.com%2Fapp%2F413150%2FStardew_Valley%2F%3Fl%3Dportuguese&psig=AOvVaw1ra4qaaRHE1kjLN5Z8KJ9e&ust=1748539831720000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOiEtc7Yxo0DFQAAAAAdAAAAABAE",
+      "genre": "Indie",
+      "avarage_score": 5,
+      "graphic_cards": [
+        "GTX 660",
+        "GTX 1050 Ti",
+        "GTX 1650"
+      ],
+      "comments": [
+        {
+          "id": "1",
+          "game_id": "ac82",
+          "game_name": "Stardew Valley",
+          "platform": "pc",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "5",
+          "date": "2025-05-28T17:32:37.228Z",
+          "comment": "Isso que é jogo de verdade, jogo todos os dias faz 8 anos e não me canso!",
+          "comment_id": 60603
+        }
+      ]
     }
   ]
 }

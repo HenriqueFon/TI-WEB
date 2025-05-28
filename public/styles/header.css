@@ -52,3 +52,23 @@ h1 {
     color: var(--green-500);
 }
 
+.add-game-button {
+    margin-right: 30px; 
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: var(--gray-900);
+    color: var(--green-500); 
+    border: 1px solid var(--green-500);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.add-game-button:hover {
+    background-color: var(--green-500);;
+    color: #0f2f24;
+    border-color: var(--green-500);;
+}
