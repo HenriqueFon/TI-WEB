@@ -19,12 +19,8 @@ export async function renderGames() {
             <div class="score">Nota média: ${game.avarage_score ?? game.average_score}</div>
         </div>
         `;
-
-        if (index < 5) {
-            recentGames.appendChild(card);
-        } else {
-            suggestedGames.appendChild(card);
-        }
+        
+        recentGames.appendChild(card);
     });
     
 }
