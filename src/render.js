@@ -15,6 +15,8 @@ renderLanguageSelectionBox()
 
 renderGameSelectionBox()
 
+createNewComment();
+
 translatePage(language)
 
 document.getElementById("language-select").addEventListener("change", function(event) {
@@ -26,26 +28,34 @@ document.getElementById("language-select").addEventListener("change", function(e
         renderGameSelectionBox()
         renderPost(language, username);
 
-        document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
+        createNewComment();
+});
+
+function createNewComment() {
+    document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
             event.preventDefault(); 
             makeComment(username);
         });
-});
+}
 
-let buttonDiv = document.getElementsByClassName("delete-buton-div");
+function addDeleteListeners() {
+    document.querySelectorAll(".delete-buton").forEach(button => {
+        button.addEventListener("click", event => {
+            const commentId = parseInt(event.target.getAttribute("data-id"));
+            console.log("Botão clicado:", commentId); // Teste
+            deleteSpecificComment(commentId);
+        });
+    });
+}
 
-console.log(buttonDiv)
+let trilho = document.getElementById('trilho')
+let body = document.querySelector('body')
 
-// document.querySelector("#delete-buton").addEventListener("click", (event) => {
-
-// });
-
-document.querySelector(".commentBoxForm").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-    makeComment(username);
-});
-
-
+trilho.addEventListener('click', ()=>{
+    trilho.classList.toggle('dark')
+    body.classList.toggle('dark')
+    console.log('abc')
+})
 
 
 

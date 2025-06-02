@@ -4,7 +4,7 @@
       "name": "Counter Strike 2",
       "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.ign.com%2Fcounter-strike-2&psig=AOvVaw1tyZ_RlzIKNMBEsGUxiapx&ust=1741378248105000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPju69Ch9osDFQAAAAAdAAAAABAJ",
       "genre": "FPS",
-      "avarage_score": 0,
+      "avarage_score": 35.5,
       "graphic_cards": [
         "GTX 1650",
         "RX 6400",
@@ -23,6 +23,18 @@
           "date": "2023-07-15T08:45:22.456Z",
           "comment": "Melhor FPS do mercado",
           "comment_id": 1
+        },
+        {
+          "id": "1",
+          "game_id": "8f04",
+          "game_name": "Counter Strike 2",
+          "platform": "switch",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "1",
+          "date": "2025-04-16T00:57:50.788Z",
+          "comment": "seial",
+          "comment_id": 6986
         }
       ],
       "id": "8f04"
@@ -138,7 +150,7 @@
       "name": "Terraria",
       "image": "https://upload.wikimedia.org/wikipedia/pt/e/ee/Terraria_capa.png",
       "genre": "Sandbox",
-      "avarage_score": 0,
+      "avarage_score": 52,
       "graphic_cards": [
         "GTX 1650",
         "RX 6400",
@@ -157,6 +169,18 @@
           "date": "2024-11-30T14:32:10.123Z",
           "comment": "Cave, lute, explore, construa! – Esse é o lema de Terraria...",
           "comment_id": 4
+        },
+        {
+          "id": "1",
+          "game_id": "8f08",
+          "game_name": "Terraria",
+          "platform": "xbox",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "4",
+          "date": "2025-04-18T20:27:41.302Z",
+          "comment": "Muito bom.",
+          "comment_id": 48332
         }
       ],
       "id": "8f08"

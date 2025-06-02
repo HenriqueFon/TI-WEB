@@ -1,6 +1,6 @@
 import { generateRandomNumber } from './utils.js';
 import { createNewCommentModel } from './models.js';
-import { apiGet, apiPatch, apiPost } from './api.js';
+import { apiDelete, apiGet, apiPatch, apiPost } from './api.js';
 
 const games_url = "http://localhost:3000";
 const users_url = "http://localhost:3001";
@@ -282,7 +282,31 @@ export async function getSpecificUserData(username) {
 }
 
 //Exclui um comentário específico de um usuário 
-export async function deleteSpecificComment() {
+export async function deleteSpecificComment(id) {
+    try {
+        
+        const games = await apiGet("http://localhost:3000/games");
+
+        const game = games.find(g => g.comments?.some(c => parseInt(c.comment_id) === parseInt(id)));
+
+        if (!game) {
+            console.warn(`Comentário ${commentId} não encontrado em nenhum jogo.`);
+            return;
+        }
+
+        // 3. Remove o comentário com o ID correspondente
+        const updatedComments = game.comments.filter(c => parseInt(c.comment_id) !== parseInt(id));
+        const updatedGame = { ...game, comments: updatedComments };
+
+        await apiPatch(`http://localhost:3000/games/${game.id}`, updatedGame);
+
+        console.log(`Comentário ${commentId} removido com sucesso do jogo ${game.name}.`);
+    } 
+    catch (error) {
+        console.log(error)
+        return `Erro ao deletar comentário: ${error.message}`;
+    }
+
 
 }
 

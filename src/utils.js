@@ -1,4 +1,5 @@
 import { translations } from '../dictionary/language.js';
+import { deleteSpecificComment } from './endpoints.js';
 
 //Gera um número aleatório para o Id
 export function generateRandomNumber() {
@@ -106,7 +107,12 @@ export function createPost(comment, user, language, sessionUser) {
     `;
 
     if(sessionUser.role === "Admin") {
-        adminExclusion = `<div class = "delete-buton-div"><button id="delete-buton" value = ${comment.comment_id}>${deleteButton}</button></div>`
+        adminExclusion = `
+        <div class="delete-buton-div">
+            <button class="delete-buton" value="${comment.comment_id}">
+                ${deleteButton}
+            </button>
+        </div>`;
     } else {
         adminExclusion = ``;
     }
@@ -146,6 +152,18 @@ export function createPost(comment, user, language, sessionUser) {
         <dev class="game-score"><h3>${score} ${comment.score}</h3></dev>
         ${adminExclusion}
     `;
+
+    if(sessionUser.role === "Admin") {
+        const deleteBtn = post.querySelector(".delete-buton");
+
+        if (deleteBtn) {
+            deleteBtn.addEventListener("click", (event) => {
+                const commentId = parseInt(event.target.value);
+                console.log("Botão clicado! ID:", commentId);
+                deleteSpecificComment(commentId);
+            });
+        }
+    }
 
     // Adicionando o post ao <main>
     document.querySelector("main").appendChild(post);
@@ -197,7 +215,7 @@ export function createGameSelectBox(name) {
     selection.appendChild(option);
 }
 
-export const translationsOptions = ["English", "Português", "日本語"]
+export const translationsOptions = ["English", "Português", "日本語", "Deutsch"]
 
 export function createLanguageSelectBox(name) {
 
