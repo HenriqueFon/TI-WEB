@@ -160,7 +160,6 @@ export async function updateAvarageScoreOfGame(gameName, newScore) {
         const totalVotes = (game.comments?.length || 0) + 1;
         let newAverageScore = totalScores / totalVotes;
 
-        // Garante que a média fique entre 0 e 5
         newAverageScore = Math.min(5, Math.max(0, newAverageScore));
 
         const response = await apiPatch(`${games_url}/games/${game.id}`, {
