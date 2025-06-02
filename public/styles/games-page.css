@@ -18,6 +18,7 @@ main {
       overflow-x: auto;
       gap: 1rem;
       padding-bottom: 1rem;
+      justify-content: center;
     }
 
     .game-card {
