@@ -150,17 +150,21 @@ export async function createCommentFromSpecificGame(gameName, comment, user, sco
 //Atualiza o avarage score para um jogo
 export async function updateAvarageScoreOfGame(gameName, newScore) {
     try {
-        // Obtém o jogo específico pelo nome
         const game = await getSpecificGame(gameName);
 
         if (!game) {
             throw new Error(`Jogo ${gameName} não encontrado`);
         }
-    
-        const totalScores = (game.comments || []).reduce((sum, comment) => sum + comment.score, 0) + newScore;
-        const newAverageScore = totalScores / ((game.comments?.length || 0) + 1);
 
-        const response = await apiPatch(`${games_url}/games/${game.id}`, { avarage_score: newAverageScore });
+        const totalScores = (game.comments || []).reduce((sum, comment) => sum + Number(comment.score), 0) + Number(newScore);
+        const totalVotes = (game.comments?.length || 0) + 1;
+        let newAverageScore = totalScores / totalVotes;
+
+        newAverageScore = Math.min(5, Math.max(0, newAverageScore));
+
+        const response = await apiPatch(`${games_url}/games/${game.id}`, {
+            avarage_score: parseFloat(newAverageScore.toFixed(2))
+        });
 
         return `Média de score do jogo ${game.name} atualizada para ${newAverageScore.toFixed(2)}`;
     } catch (error) {
@@ -168,6 +172,8 @@ export async function updateAvarageScoreOfGame(gameName, newScore) {
         return `Erro ao atualizar a média de score: ${error.message}`;
     }
 }
+
+
 
 
 //Recupera uma lista de jogos com base na placa de video dentro do JSON SERVER

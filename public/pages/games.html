@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamer Score</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/nav.css">
-    <link rel="stylesheet" href="../styles/aside.css">
-    <link rel="stylesheet" href="../styles/post.css">
-    <link rel="stylesheet" href="../styles/wrapper.css">
-    <link rel="stylesheet" href="../styles/comment-box.css">
+  <meta charset="UTF-8">
+  <title>Jogos - Gamer Score</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="../styles/games-page.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/nav.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../src/render-home-page.js" type= "module" defer></script>
-    
+  <script src="../../src/render-games-page.js" type= "module"></script>
 </head>
 <body>
-
     <header class="header">
         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
             <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
@@ -49,37 +41,10 @@
         </select>
 
     </header>
-    <div class="wrapper">
-        <main>
-            <article class = "comment-box">
-                <select name="game-options" id="game-select">
-                    <option id = "game-placeholder" value = "" data-translate = "select-placeholder">Select a game</option>
-                  </select>
-                <select name="game-score" id="score-select">
-                    <option id = "score-placeholder" value = "" data-translate = "select-score-placeholder">Score</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <select name="game-platform" id="platform-select">
-                    <option id = "platform-placeholder" value = "" data-translate = "select-platform-placeholder">Platform</option>
-                    <option value="pc">PC</option>
-                    <option value="switch">Switch</option>
-                    <option value="xbox">Xbox</option>
-                    <option value="playstation">playstation</option>
-                </select>
-                <form class="commentBoxForm">
-                    <textarea id = "commentBox" placeholder="Leave a comment" data-translate-placeholder = "comment-placeholder"></textarea>
-                    <button type="submit" id = "commentButton" data-translate = "comment-button">Comment</button>
-                </form>
-            </article>
+  <main>
+    <h1>Jogos</h1>
+    <div class="games-grid" id="games"></div>
 
-        </main>
-    </div >
-    
-    
-
+  </main>
 </body>
 </html>
