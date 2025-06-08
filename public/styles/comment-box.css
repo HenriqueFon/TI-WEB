@@ -116,3 +116,40 @@
     color: var(--green-500);
 }
 
+
+#game-filter,
+#score-filter,
+#platform-filter {
+
+    font-size: 1rem;
+    background: var(--gray-800);
+    color: var(--green-500);
+    border: 1px solid var(--green-500);
+    border-radius: 10px;
+    height: 50px;
+    padding: 0 1rem;
+    font-weight: bold;
+    min-width: 120px;
+    margin-right: 20px;
+    margin-bottom: 25px;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+
+#game-filter:hover, #score-filter:hover, #platform-filter:hover {
+    background: var(--green-500);
+    color: var(--white);
+}
+
+#game-filter option,
+#score-filter option, 
+#platform-filter option {
+    background-color: var(--gray-800);
+    color: var(--gray-100);
+    padding: 8px;
+}

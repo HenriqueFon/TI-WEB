@@ -37,6 +37,15 @@ export async function renderGameSelectionBox() {
     }
 }
 
+//Renderiza as opções de filtro de jogos
+export async function renderGameFilterBox() {
+    const gamesName = await getGamesNames();
+
+    for (const names of gamesName) {
+        createGameFilterBox(names)
+    }
+}
+
 //Renderiza as opções de seleção de jogos dentro da comment box
 export async function renderLanguageSelectionBox() {
 
@@ -77,9 +86,9 @@ function displayFilteredPosts(comments, language, sessionUser) {
 }
 
 function setupFilters() {
-    const gameSelect = document.getElementById("game-select");
-    const platformSelect = document.getElementById("platform-select");
-    const scoreSelect = document.getElementById("score-select");
+    const gameSelect = document.getElementById("game-filter");
+    const platformSelect = document.getElementById("platform-filter");
+    const scoreSelect = document.getElementById("score-filter");
 
     const filterFunction = async () => {
         const game = gameSelect.value;
@@ -102,3 +111,30 @@ function setupFilters() {
     platformSelect.addEventListener("change", filterFunction);
     scoreSelect.addEventListener("change", filterFunction);
 }
+
+async function preencherSelectsDeJogos() {
+    const gameSelect = document.getElementById('game-select');
+    const gameFilter = document.getElementById('game-filter');
+
+    const nomesDosJogos = await getGamesNames();
+
+    if (!Array.isArray(nomesDosJogos)) {
+        console.error("Erro ao buscar nomes dos jogos:", nomesDosJogos);
+        return;
+    }
+
+    nomesDosJogos.forEach(nome => {
+
+        const option1 = document.createElement('option');
+        option1.value = nome;
+        option1.textContent = nome;
+
+        gameFilter.appendChild(option1);
+    });
+
+    // Se estiver usando sistema de tradução
+    translateText();
+}
+
+// Executa ao carregar a página
+window.addEventListener('DOMContentLoaded', preencherSelectsDeJogos);
