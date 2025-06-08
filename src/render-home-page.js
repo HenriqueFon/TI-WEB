@@ -1,6 +1,6 @@
 import { translatePage } from './utils.js';
 import { createNewCommentModel } from './models.js';
-import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelectionBox, renderCommentBox, makeComment } from './facade.js';
+import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelectionBox, renderCommentBox, makeComment } from './home-facade.js';
 
 let username = "Henrique";
 let password = "Password123"
