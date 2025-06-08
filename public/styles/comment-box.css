@@ -159,6 +159,17 @@
     background-color: #c5c5c5;
 }
 
+.dark #add-game-btn{
+    color:black;
+    background-color: #c5c5c5;
+}
+
+.dark #game-filter,
+.dark #score-filter,
+.dark #platform-filter {
+    color:black;
+    background-color: #c5c5c5;
+}
 
 #game-filter,
 #score-filter,
