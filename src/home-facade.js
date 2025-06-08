@@ -4,13 +4,14 @@ import { createPost, createGameSelectBox, createSidebarPerfil, createLanguageSel
 //Renderiza todos os comentários já feitos
 export async function renderPost(language, username) {
     const comments = await getAllComments();
-
     const sessionUser = await getSpecificUserData(username); 
 
-    for (const comment of comments) {
-        const user = await getSpecificUserData(comment.user); 
-        createPost(comment, user, language, sessionUser);
-    }
+    allLoadedComments = comments; // armazenar todos os comentários
+    currentLanguage = language;
+    currentUsername = username;
+
+    displayFilteredPosts(comments, language, sessionUser); // função separada para renderizar
+    setupFilters(); // ativa os filtros após carregar
 }
 
 //Renderiza a caixa de comentários 
@@ -32,6 +33,15 @@ export async function renderGameSelectionBox() {
 
     for (const names of gamesName) {
         createGameSelectBox(names)
+    }
+}
+
+//Renderiza as opções de filtro de jogos
+export async function renderGameFilterBox() {
+    const gamesName = await getGamesNames();
+
+    for (const names of gamesName) {
+        createGameFilterBox(names)
     }
 }
 
@@ -60,3 +70,71 @@ export async function makeComment(username) {
 
     await createCommentFromSpecificGame(game, comment, user, score, platform);
 }
+
+let allLoadedComments = []; // Para armazenar todos os comentários após carregar
+let currentLanguage;
+let currentUsername;
+
+function displayFilteredPosts(comments, language, sessionUser) {
+    const main = document.querySelector("main");
+    main.querySelectorAll(".post").forEach(post => post.remove()); // remove todos os posts atuais
+
+    comments.forEach(async (comment) => {
+        const user = await getSpecificUserData(comment.user);
+        createPost(comment, user, language, sessionUser);
+    });
+}
+
+function setupFilters() {
+    const gameSelect = document.getElementById("game-filter");
+    const platformSelect = document.getElementById("platform-filter");
+    const scoreSelect = document.getElementById("score-filter");
+
+    const filterFunction = async () => {
+        const game = gameSelect.value;
+        const platform = platformSelect.value;
+        const score = scoreSelect.value;
+
+        const filtered = allLoadedComments.filter(comment => {
+            return (
+                (game === "" || comment.game_name === game) &&
+                (platform === "" || comment.platform === platform) &&
+                (score === "" || comment.score.toString() === score)
+            );
+        });
+
+        const sessionUser = await getSpecificUserData(currentUsername);
+        displayFilteredPosts(filtered, currentLanguage, sessionUser);
+    };
+
+    gameSelect.addEventListener("change", filterFunction);
+    platformSelect.addEventListener("change", filterFunction);
+    scoreSelect.addEventListener("change", filterFunction);
+}
+
+async function preencherSelectsDeJogos() {
+    const gameSelect = document.getElementById('game-select');
+    const gameFilter = document.getElementById('game-filter');
+
+    const nomesDosJogos = await getGamesNames();
+
+    if (!Array.isArray(nomesDosJogos)) {
+        console.error("Erro ao buscar nomes dos jogos:", nomesDosJogos);
+        return;
+    }
+
+    nomesDosJogos.forEach(nome => {
+
+        const option1 = document.createElement('option');
+        option1.value = nome;
+        option1.textContent = nome;
+
+        gameFilter.appendChild(option1);
+    });
+
+    // Se estiver usando sistema de tradução
+    translateText();
+}
+
+// Executa ao carregar a página
+window.addEventListener('DOMContentLoaded', preencherSelectsDeJogos);

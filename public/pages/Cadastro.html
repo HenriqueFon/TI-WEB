@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/TI-WEB/public/styles/Login.css">
+    <script src="cadastro.js"></script>
+</head>
+
+<body>
+    <main class="container">
+        <form id="formCadastro">
+            <h1>Cadastro Games Score</h1>
+
+            <div class="input-box">
+                <input name="usuario" id="usuario" placeholder="Nome de Usuário" type="text" required>
+                <i class="bx bxs-user"></i>
+            </div>
+
+            <div class="input-box">
+                <input name="email" id="email" placeholder="Email do Usuário" type="email" required>
+                <i class="bx bxs-user"></i>
+            </div>
+
+            <div class="input-box">
+                <input name="senha" id="senha" placeholder="Senha" type="password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <div class="input-box">
+                <input name="confirmarSenha" id="confirmarSenha" placeholder="Confirmar Senha" type="password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <button type="submit" class="login">Criar</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('formCadastro').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const usuario = document.getElementById('usuario').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            if (senha !== confirmarSenha) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+
+            try {
+                const resposta = await fetch('http://localhost:3000/cadastro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ usuario, email, senha })
+                });
+
+                const resultado = await resposta.text();
+                alert(resultado);
+            } catch (erro) {
+                console.error('Erro ao cadastrar:', erro);
+                alert('Erro ao enviar os dados.');
+            }
+        });
+    </script>
+</body>
+
+</html>
