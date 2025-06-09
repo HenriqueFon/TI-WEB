@@ -149,7 +149,7 @@ export const translations = {
         "popover-storage": "Almacenamiento",
         "popover-os": "SO"
     },
-    "Russian": {
+    "Русский": {
         "title": "Рейтинг игрока",
         "admin-role": "Администратор",
         "user-role": "Пользователь",
@@ -224,7 +224,7 @@ export const translations = {
         "popover-storage": "Memoria",
         "popover-os": "OS"
     },
-    " عربي": {
+    "عربي": {
         "title": "نتيجة اللاعب",
         "role-admin": "مشرف",
         "role-user": "مستخدم",
