@@ -43,3 +43,7 @@
   background-color: #444;
   color: white;
 }
+
+.modal-content button[type="submit"]:hover, .modal-content button#cancelBtn:hover {
+  cursor: pointer;
+}
