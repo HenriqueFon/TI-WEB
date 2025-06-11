@@ -1,6 +1,11 @@
 import { translatePage } from './utils.js';
 import { createNewCommentModel } from './models.js';
 import { renderPost, renderSideBar, renderGameSelectionBox, renderLanguageSelectionBox, renderCommentBox, makeComment } from './facade.js';
+import { filterGamesByInput } from './utils.js';
+
+document.addEventListener("DOMContentLoaded", () => {
+    filterGamesByInput();
+});
 
 let username = "Henrique";
 let password = "Password123"
