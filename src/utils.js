@@ -241,7 +241,7 @@ export function filterGamesByInput() {
 }
 
 
-export const translationsOptions = ["English", "Português", "日本語", "Deutsch"]
+export const translationsOptions = ["English", "Português", "日本語", "Deutsch","中文", "Español", "Français", "Italiano", "Русский", "한국어", "Türkçe"]
 
 export function createLanguageSelectBox(name) {
 
