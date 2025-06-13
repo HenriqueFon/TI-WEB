@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/TI-WEB/public/styles/Login.css">
+    <script src="/TI-WEB/src/Geral.js"></script>
+
+</head>
+
+<body>
+    <main class="container">
+        <form action="Login.html" id="formLogin">
+            <h1>Login Games Score</h1>
+            <div class="input-box">
+                <input placeholder="Usuario" type="text" id="loginInput">
+                <i class="bx bxs-user"></i>
+            </div>
+
+            <div class="input-box">
+                <input placeholder="Senha" type="password" id="passwordInput">
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            
+            <div class="remember-forgot">
+                <label>
+                <input type="checkbox">
+                Lembrar Senha
+                </label>
+                <a href="#">Esqueci a senha</a>
+                
+            </div>
+            
+            <button type="submit" class="login" id="botão">Login</button>
+
+
+            <div class="registri-se">
+                <p>Não tem uma conta? <a href="/TI-WEB/public/pages/Cadastro.html">Cadastre-se</a></p>
+            </div>
+        </form>
+
+    </main>
+
+    <script>
+        document.getElementById('formLogin').addEventListener('submit', (event)=>{ 
+            event.preventDefault();
+
+            const login = document.getElementById('loginInput').value 
+            const password = document.getElementById('passwordInput').value
+
+            if (loginUser(login, password)){
+                location.href='index.html'
+            }
+            else{
+                alert('Login ou senha incorretos.')
+            }
+        })
+    </script>
+
+</body>
+</html>
