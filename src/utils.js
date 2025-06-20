@@ -1,6 +1,8 @@
 import { translations } from '../dictionary/language.js';
 import { deleteSpecificComment } from './endpoints.js';
 
+const games_url = "http://localhost:3000";
+
 //Gera um número aleatório para o Id
 export function generateRandomNumber() {
     const randomNumber = Math.floor(Math.random() * 100000) + 1;
@@ -215,7 +217,31 @@ export function createGameSelectBox(name) {
     selection.appendChild(option);
 }
 
-export const translationsOptions = ["English", "Português", "日本語", "Deutsch"]
+
+// Filtro de jogos
+export function filterGamesByInput() {
+    const filterInput = document.getElementById("filtro");
+
+    filterInput.addEventListener("input", () => {
+        const searchTerm = filterInput.value.toLowerCase().trim();
+        const posts = document.querySelectorAll(".post");
+
+        posts.forEach(post => {
+            const gameNameElement = post.querySelector(".game-name h2");
+            if (gameNameElement) {
+                const gameName = gameNameElement.textContent.toLowerCase().trim();
+                if (gameName.includes(searchTerm)) {
+                    post.style.display = "block"; // Mostra o post
+                } else {
+                    post.style.display = "none"; // Esconde o post
+                }
+            }
+        });
+    });
+}
+
+
+export const translationsOptions = ["English", "Português", "日本語", "Deutsch","中文", "Español", "Français", "Italiano", "Русский", "한국어", "Türkçe"]
 
 export function createLanguageSelectBox(name) {
 
