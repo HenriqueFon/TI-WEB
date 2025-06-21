@@ -2,9 +2,9 @@
   "games": [
     {
       "name": "Counter Strike 2",
-      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.ign.com%2Fcounter-strike-2&psig=AOvVaw1tyZ_RlzIKNMBEsGUxiapx&ust=1741378248105000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPju69Ch9osDFQAAAAAdAAAAABAJ",
+      "image": "https://egamersworld.com/cdn-cgi/image/width=690,quality=75,format=webp/uploads/blog/1696414021417.webp",
       "genre": "FPS",
-      "avarage_score": 237,
+      "avarage_score": 35.5,
       "graphic_cards": [
         "GTX 1650",
         "RX 6400",
@@ -41,9 +41,9 @@
     },
     {
       "name": "Final Fantasy 13",
-      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.square-enix-games.com%2Fpt_BR%2Fgames%2Ffinal-fantasy-xiii&psig=AOvVaw3qSgei2UOpNUUopKu5nTZk&ust=1741377646490000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCODOi7Wf9osDFQAAAAAdAAAAABAS",
+      "image": "https://gh.cdn.sewest.net/assets/ident//GHAssets/FFXIII/GamePage_Header_Portrait.jpg?quality=65&width=66%25&height=66%25",
       "genre": "RPG",
-      "avarage_score": 21,
+      "avarage_score": 4.5,
       "graphic_cards": [
         "GTX 660",
         "GTX 1050 Ti",
@@ -63,6 +63,18 @@
           "date": "2025-03-14T20:16:56.109Z",
           "comment": "Jogo muito legal",
           "comment_id": 2
+        },
+        {
+          "id": "1",
+          "game_id": "8f05",
+          "game_name": "Final Fantasy 13",
+          "platform": "pc",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "5",
+          "date": "2025-06-02T19:06:12.707Z",
+          "comment": "Jogão",
+          "comment_id": 20636
         }
       ],
       "id": "8f05"
@@ -71,7 +83,7 @@
       "name": "Skyrim",
       "image": "https://upload.wikimedia.org/wikipedia/pt/thumb/a/aa/The_Elder_Scrolls_5_Skyrim_capa.png/270px-The_Elder_Scrolls_5_Skyrim_capa.png",
       "genre": "RPG",
-      "avarage_score": 184,
+      "avarage_score": 27.5,
       "graphic_cards": [
         "GTX 660",
         "GTX 1050 Ti",
@@ -111,7 +123,7 @@
       "name": "The Witcher 3",
       "image": "https://upload.wikimedia.org/wikipedia/pt/0/06/TW3_Wild_Hunt.png",
       "genre": "RPG",
-      "avarage_score": 45.5,
+      "avarage_score": 10,
       "graphic_cards": [
         "GTX 660",
         "GTX 1050 Ti",
@@ -150,7 +162,7 @@
       "name": "Terraria",
       "image": "https://upload.wikimedia.org/wikipedia/pt/e/ee/Terraria_capa.png",
       "genre": "Sandbox",
-      "avarage_score": 52,
+      "avarage_score": 10,
       "graphic_cards": [
         "GTX 1650",
         "RX 6400",
@@ -224,6 +236,32 @@
       ],
       "id": "8f09",
       "avarage_score": 52.5
+    },
+    {
+      "id": "ac82",
+      "name": "Stardew Valley",
+      "image": "https://image.api.playstation.com/cdn/UP2456/CUSA06840_00/0WuZecPtRr7aEsQPv2nJqiPa2ZvDOpYm.png",
+      "genre": "Indie",
+      "avarage_score": 5,
+      "graphic_cards": [
+        "GTX 660",
+        "GTX 1050 Ti",
+        "GTX 1650"
+      ],
+      "comments": [
+        {
+          "id": "1",
+          "game_id": "ac82",
+          "game_name": "Stardew Valley",
+          "platform": "pc",
+          "user": "Henrique",
+          "role": "Admin",
+          "score": "5",
+          "date": "2025-05-28T17:32:37.228Z",
+          "comment": "Jogasso esse daqui",
+          "comment_id": 60603
+        }
+      ]
     }
   ]
 }
