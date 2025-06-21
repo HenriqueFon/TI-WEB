@@ -224,7 +224,7 @@ export const translations = {
         "popover-storage": "Memoria",
         "popover-os": "OS"
     },
-    " عربي": {
+    "عربي": {
         "title": "نتيجة اللاعب",
         "role-admin": "مشرف",
         "role-user": "مستخدم",

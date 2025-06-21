@@ -54,6 +54,70 @@ export function timeSinceComment(commentDate, language) {
             if (minutes > 0) return `${minutes}分前に公開されました`;
             return `${seconds}秒前に公開されました`;
 
+            case "Deutsch":
+                if (years > 0) return `${years} Jahr${years > 1 ? 'e' : ''} her`;
+                if (months > 0) return `${months} Monat${months > 1 ? 'e' : ''} her`;
+                if (days > 0) return `${days} Tag${days > 1 ? 'e' : ''} her`;
+                if (hours > 0) return `${hours} Stunde${hours > 1 ? 'n' : ''} her`;
+                if (minutes > 0) return `${minutes} Minute${minutes > 1 ? 'n' : ''} her`;
+                return `${seconds} Sekunde${seconds > 1 ? 'n' : ''} her`;
+    
+            case "中文":
+                if (years > 0) return `${years}年前`;
+                if (months > 0) return `${months}个月前`;
+                if (days > 0) return `${days}天前`;
+                if (hours > 0) return `${hours}小时前`;
+                if (minutes > 0) return `${minutes}分钟前`;
+                return `${seconds}秒前`;
+    
+            case "Español":
+                if (years > 0) return `${years} año${years > 1 ? 's' : ''} atrás`;
+                if (months > 0) return `${months} mes${months > 1 ? 'es' : ''} atrás`;
+                if (days > 0) return `${days} día${days > 1 ? 's' : ''} atrás`;
+                if (hours > 0) return `${hours} hora${hours > 1 ? 's' : ''} atrás`;
+                if (minutes > 0) return `${minutes} minuto${minutes > 1 ? 's' : ''} atrás`;
+                return `${seconds} segundo${seconds > 1 ? 's' : ''} atrás`;
+    
+            case "Français":    
+                if (years > 0) return `${years} an${years > 1 ? 's' : ''} auparavant`;
+                if (months > 0) return `${months} mois auparavant`;
+                if (days > 0) return `${days} jour${days > 1 ? 's' : ''} auparavant`;
+                if (hours > 0) return `${hours} heure${hours > 1 ? 's' : ''} auparavant`;
+                if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} auparavant`;
+                return `${seconds} seconde${seconds > 1 ? 's' : ''} auparavant`;
+    
+            case "Italiano":
+                if (years > 0) return `${years} anno${years > 1 ? 'i' : ''} fa`;
+                if (months > 0) return `${months} mese${months > 1 ? 'i' : ''} fa`;
+                if (days > 0) return `${days} giorno${days > 1 ? 'i' : ''} fa`;
+                if (hours > 0) return `${hours} ora${hours > 1 ? 'e' : ''} fa`;
+                if (minutes > 0) return `${minutes} minuto${minutes > 1 ? 'i' : ''} fa`;
+                return `${seconds} secondo${seconds > 1 ? 'i' : ''} fa`;
+    
+            case "Русский":
+                if (years > 0) return `${years} год${years > 1 ? 'а' : ''} назад`;
+                if (months > 0) return `${months} месяц${months > 1 ? 'а' : ''} назад`;
+                if (days > 0) return `${days} день${days > 1 ? 'я' : ''} назад`;
+                if (hours > 0) return `${hours} час${hours > 1 ? 'а' : ''} назад`;
+                if (minutes > 0) return `${minutes} минут${minutes > 1 ? 'ы' : ''} назад`;
+                return `${seconds} секунд${seconds > 1 ? 'ы' : ''} назад`;
+    
+            case "한국어":
+                if (years > 0) return `${years}년 전`;
+                if (months > 0) return `${months}개월 전`;
+                if (days > 0) return `${days}일 전`;
+                if (hours > 0) return `${hours}시간 전`;
+                if (minutes > 0) return `${minutes}분 전`;
+                return `${seconds}초 전`;
+    
+            case "Türkçe":
+                if (years > 0) return `${years} yıl${years > 1 ? 'lar' : ''} önce`;
+                if (months > 0) return `${months} ay${months > 1 ? 'lar' : ''} önce`;
+                if (days > 0) return `${days} gün${days > 1 ? 'ler' : ''} önce`;
+                if (hours > 0) return `${hours} saat${hours > 1 ? 'ler' : ''} önce`;
+                if (minutes > 0) return `${minutes} dakika${minutes > 1 ? 'lar' : ''} önce`;
+                return `${seconds} saniye${seconds > 1 ? 'ler' : ''} önce`;
+
         default:
             return "Unsupported language"; // Caso a linguagem não seja reconhecida
     }
@@ -217,6 +281,8 @@ export function createGameSelectBox(name) {
     selection.appendChild(option);
 }
 
+export const translationsOptions = ["English", "Português", "日本語", "Deutsch","中文", "Español", "Français", "Italiano", "Русский", "한국어", "Türkçe", "عربي"];
+
 
 // Filtro de jogos
 export function filterGamesByInput() {
@@ -239,9 +305,6 @@ export function filterGamesByInput() {
         });
     });
 }
-
-
-export const translationsOptions = ["English", "Português", "日本語", "Deutsch","中文", "Español", "Français", "Italiano", "Русский", "한국어", "Türkçe"]
 
 export function createLanguageSelectBox(name) {
 
