@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+/* Botões fixos no topo */
+.nav-buttons {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background-color: #444;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #666;
+}
+
+/* Container geral da homepage */
+.homepage-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 40px;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Perfil na homepage */
+.homepage-profile {
+  width: 300px;
+}
+
+/* Banner do perfil */
+.banner {
+  height: 180px;
+  width: 100%;
+  background-color: #2a2a2a;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Cartão do perfil */
+.profile-card {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.profile-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid #444;
+}
+
+.profile-card h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.profile-card p {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Seção de comentários */
+.comments-section {
+  flex: 1;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.comments-section h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 6px;
+}
+
+.static-comments {
+  list-style: none;
+  padding-left: 0;
+}
+
+.static-comments li {
+  background-color: #2b2b2b;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 4px solid #555;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Estilos dos botões e inputs da página de perfil (perfil.html) */
+button {
+  background-color: #333;
+  color: #e0e0e0;
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+#banner-url,
+#avatar-url,
+#username-input,
+#bio-editor {
+  background-color: #1f1f1f;
+  color: #eee;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 6px;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.banner-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+#bio {
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 6px;
+}
+
+#reviews-list {
+  list-style: none;
+  padding: 0;
+}
+
+#reviews-list li {
+  background-color: #292929;
+  border-left: 4px solid #555;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+#reviews-list li:hover {
+  transform: scale(1.01);
+  background-color: #333;
+}
+
+#avatar-controls, #username-controls {
+  margin: 10px 0;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil do Jogador</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="nav-buttons">
+    <a href="perfil.html" class="nav-btn">Perfil</a>
+    <a href="index.html" class="nav-btn">Homepage</a>
+  </div>
+
+  <div class="banner" id="banner">
+    <div class="banner-controls">
+      <input type="url" id="banner-url" placeholder="Cole a URL do banner" style="display:none;" />
+      <button id="edit-banner-btn">Editar Banner</button>
+      <button id="save-banner-btn" style="display:none;">Salvar Banner</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="profile-card">
+      <img id="avatar" src="" alt="Avatar do Usuário" />
+
+      <div id="avatar-controls">
+        <input type="url" id="avatar-url" placeholder="Cole a URL da nova imagem" style="display:none;" />
+        <button id="edit-avatar-btn">Editar Avatar</button>
+        <button id="save-avatar-btn" style="display:none;">Salvar Avatar</button>
+      </div>
+
+      <h1 id="username">Carregando...</h1>
+      <div id="username-controls">
+        <input type="text" id="username-input" placeholder="Novo nome de usuário" style="display:none;" />
+        <button id="edit-username-btn">Editar Nome</button>
+        <button id="save-username-btn" style="display:none;">Salvar Nome</button>
+      </div>
+
+      <div id="bio-section">
+        <p id="bio">Biografia em carregamento...</p>
+        <textarea id="bio-editor" style="display:none;"></textarea>
+        <button id="edit-btn">Editar Bio</button>
+        <button id="save-btn" style="display:none;">Salvar Bio</button>
+      </div>
+
+      <h2>Avaliações</h2>
+      <ul id="reviews-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

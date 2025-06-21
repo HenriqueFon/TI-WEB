@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "username": "Samuel Ferreira Campos",
+  "avatar": "https://randomuser.me/api/portraits/men/75.jpg",
+  "bio": "Aqui este campo pode editar tudo!\nFique à vontade.",
+  "reviews": [
+    {
+      "game": "The Witcher 3",
+      "rating": 5,
+      "comment": "Obra-prima do gênero RPG!"
+    },
+    {
+      "game": "Cyberpunk 2077",
+      "rating": 4,
+      "comment": "Melhorou muito após os patches."
+    },
+    {
+      "game": "Stardew Valley",
+      "rating": 5,
+      "comment": "Simplesmente relaxante e viciante."
+    }
+  ]
+}
