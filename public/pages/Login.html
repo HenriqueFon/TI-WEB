@@ -7,26 +7,29 @@
     <title>Login</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="/TIW(cadastro) - Copia/TI-WEB/public/styles/Login.css">
+    <link rel="stylesheet" href="/public/styles/Login.css">
 </head>
 
 <body>
     <main>
         <form id="loginForm">
-            <h1>Login Games Score</h1>
+            <div class="GameScore"> 
+            <h1>Login Games Score </h1>
+            </div>
             <div class="input-box">
 
                 <input type="text" id="usuario" placeholder="E-mail">
-                <span>👤</span>
+                <i class="bx bxs-user"></i>
             </div>
             <div class="input-box">
 
                 <input type="password" id="senha" placeholder="Senha">
-                <span>🔒</span>
+                       <i class="bx bxs-lock-alt"></i>
             </div>
-            <button type="submit">Login</button>
+
+            <button class="bot" type="submit">Login</button>
             <div class="registri-se">
-                <p>Não tem uma conta? <a href="/TIW(cadastro) - Copia/TI-WEB/public/pages/Cadastro.html">Cadastre-se</a></p>
+                <p>Não tem uma conta? <a href="/public/pages/Cadastro.html">Cadastre-se</a></p>
             </div>
         </form>
     </main>
@@ -67,14 +70,6 @@
         });
     </script>
     <div id="perfil"></div>
-    <script>
-        const usuario = localStorage.getItem('usuarioLogado');
-        if (usuario) {
-            document.getElementById('perfil').innerText = `Bem-vindo, ${usuario}!`;
-        } else {
-            document.getElementById('perfil').innerText = 'Você não está logado.';
-        }
-    </script>
 </body>
 
 </html>
