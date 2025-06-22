@@ -6,59 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/TI-WEB/public/styles/Login.css">
-    <script src="/TI-WEB/src/Geral.js"></script>
-
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="/TIW(cadastro) - Copia/TI-WEB/public/styles/Login.css">
 </head>
 
 <body>
-    <main class="container">
-        <form action="Login.html" id="formLogin">
+    <main>
+        <form id="loginForm">
             <h1>Login Games Score</h1>
             <div class="input-box">
-                <input placeholder="Usuario" type="text" id="loginInput">
-                <i class="bx bxs-user"></i>
-            </div>
 
+                <input type="text" id="usuario" placeholder="E-mail">
+                <span>👤</span>
+            </div>
             <div class="input-box">
-                <input placeholder="Senha" type="password" id="passwordInput">
-                <i class="bx bxs-lock-alt"></i>
-            </div>
-            
-            <div class="remember-forgot">
-                <label>
-                <input type="checkbox">
-                Lembrar Senha
-                </label>
-                <a href="#">Esqueci a senha</a>
-                
-            </div>
-            
-            <button type="submit" class="login" id="botão">Login</button>
 
-
+                <input type="password" id="senha" placeholder="Senha">
+                <span>🔒</span>
+            </div>
+            <button type="submit">Login</button>
             <div class="registri-se">
-                <p>Não tem uma conta? <a href="/TI-WEB/public/pages/Cadastro.html">Cadastre-se</a></p>
+                <p>Não tem uma conta? <a href="/TIW(cadastro) - Copia/TI-WEB/public/pages/Cadastro.html">Cadastre-se</a></p>
             </div>
         </form>
-
     </main>
 
-    <script>
-        document.getElementById('formLogin').addEventListener('submit', (event)=>{ 
+    <script type="module">
+        import { login } from '/TI-WEB/src/Geral.js';
+
+        document.getElementById('formLogin').addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const login = document.getElementById('loginInput').value 
-            const password = document.getElementById('passwordInput').value
+            const username = document.getElementById('loginInput').value.trim();
+            const password = document.getElementById('passwordInput').value;
 
-            if (loginUser(login, password)){
-                location.href='index.html'
+            const resultado = await login(username, password);
+
+            if (resultado === true) {
+                location.href = 'index.html'; // Redireciona após login bem-sucedido
+            } else {
+                alert(resultado); // Exibe erro apropriado
             }
-            else{
-                alert('Login ou senha incorretos.')
-            }
-        })
+        });
     </script>
-
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio padrão
+            // Aqui você pode adicionar a lógica de cadastro (ex: salvar no localStorage)
+            window.location.href = 'login.html'; // Redireciona para a página de login
+        });
+    </script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const usuario = document.getElementById('usuario').value;
+            // Aqui você pode validar o usuário e senha
+            localStorage.setItem('usuarioLogado', usuario);
+            window.location.href = 'index.html';
+        });
+    </script>
+    <div id="perfil"></div>
+    <script>
+        const usuario = localStorage.getItem('usuarioLogado');
+        if (usuario) {
+            document.getElementById('perfil').innerText = `Bem-vindo, ${usuario}!`;
+        } else {
+            document.getElementById('perfil').innerText = 'Você não está logado.';
+        }
+    </script>
 </body>
+
 </html>
