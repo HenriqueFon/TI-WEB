@@ -261,7 +261,8 @@ export function createSidebarPerfil(user, language) {
             <span>${role}</span>
         </div>
         <footer>
-            <a href="#" data-translate = "profile-edit">${profileText}</a>
+            <a href="/public/pages/editarPerfil.html" data-translate="profile-edit">${profileText}</a>
+
         </footer>
     `;
 
